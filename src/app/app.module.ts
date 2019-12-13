@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './map/map.component';
-import { MarkerService } from "./marker.service";
-import {HttpClientModule} from "@angular/common/http";
+import { MarkerService } from "./services/marker.service";
+import { HttpClientModule } from "@angular/common/http";
+import { PopUpService } from "./services/pop-up.service";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule
   ],
   providers: [
-    MarkerService
+    MarkerService,
+    PopUpService
   ],
   bootstrap: [AppComponent]
 })

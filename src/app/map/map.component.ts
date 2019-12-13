@@ -1,7 +1,6 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import * as L from 'leaflet';
-import { icon, Marker } from 'leaflet';
-import { MarkerService } from "../marker.service";
+import { MarkerService } from "../services/marker.service";
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -23,6 +22,7 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
+
 export class MapComponent implements AfterViewInit {
   private map;
 
@@ -30,7 +30,8 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalMarkers(this.map)
+    this.markerService.makeCapitalMarkers(this.map);
+    // this.markerService.makeCapitalCircleMarkers(this.map);
   }
 
   private initMap(): void {
