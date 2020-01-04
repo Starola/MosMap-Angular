@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './_services/auth.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { LoginComponent } from './login/login.component';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
