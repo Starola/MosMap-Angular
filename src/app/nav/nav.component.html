@@ -4,11 +4,20 @@
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
 
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button *ngIf="!loggedIn()" mat-button  routerLink="/login">Login</button>
+      <button *ngIf="!loggedIn()" mat-button  routerLink="/register">Registrieren</button>
+      <button *ngIf="loggedIn()" mat-button  (click)="logOut()">Logout</button>
+    </div>
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+   </button>
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
     <button *ngIf="!loggedIn()" mat-button  routerLink="/login">Login</button>
     <button *ngIf="!loggedIn()" mat-button  routerLink="/register">Registrieren</button>
     <button *ngIf="loggedIn()" mat-button  (click)="logOut()">Logout</button>
-
-  </mat-toolbar>
+</mat-menu>
 
 
 
