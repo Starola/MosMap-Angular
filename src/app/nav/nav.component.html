@@ -5,6 +5,7 @@
     <span class="example-fill-remaining-space"></span>
 
     <button *ngIf="!loggedIn()" mat-button  routerLink="/login">Login</button>
+    <button *ngIf="!loggedIn()" mat-button  routerLink="/register">Registrieren</button>
     <button *ngIf="loggedIn()" mat-button  (click)="logOut()">Logout</button>
 
   </mat-toolbar>

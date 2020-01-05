@@ -1,4 +1,7 @@
 <form #loginForm="ngForm" (ngSubmit)="login()">
+    <h2 class="text-center text-primary">Login</h2>
+    <hr>
+
     <div>
         <mat-form-field>
             <input matInput  placeholder="Username" name="username" required [(ngModel)]="model.username">

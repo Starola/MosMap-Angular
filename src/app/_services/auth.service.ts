@@ -29,4 +29,8 @@ export class AuthService {
     localStorage.removeItem('token');
     console.log('User hat sich ausgeloggt');
   }
+
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'register', model);
+  }
 }
