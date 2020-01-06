@@ -15,6 +15,7 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { MapContainerComponent } from './map-container/map-container.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    MapContainerComponent
   ],
   imports: [
     BrowserModule,
