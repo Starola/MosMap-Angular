@@ -16,6 +16,11 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { MapContainerComponent } from './map-container/map-container.component';
+import { JwtModule } from '@auth0/angular-jwt'
+
+export function tokenGetter(){
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { MapContainerComponent } from './map-container/map-container.component';
     FormsModule ,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    JwtModule
   ],
   providers: [
     AuthService

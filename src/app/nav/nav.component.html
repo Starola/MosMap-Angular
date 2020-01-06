@@ -3,7 +3,7 @@
   
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
-
+    <div *ngIf="loggedIn()">{{authService.decodedToken?.unique_name}}</div>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
       <button *ngIf="!loggedIn()" mat-button  routerLink="/login">Login</button>
       <button *ngIf="!loggedIn()" mat-button  routerLink="/register">Registrieren</button>
