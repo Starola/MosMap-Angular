@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { MapContainerComponent } from './map-container/map-container.component';
 import { JwtModule } from '@auth0/angular-jwt'
+import { environment } from 'src/environments/environment';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -41,7 +42,13 @@ export function tokenGetter(){
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-    JwtModule
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [environment.apiUrl],
+        blacklistedRoutes: []
+      }
+    })
   ],
   providers: [
     AuthService
