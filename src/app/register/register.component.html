@@ -1,15 +1,18 @@
-  <form #registerForm="ngForm" (ngSubmit)="register()">
-    <h2 class="text-center text-primary">Registrierung</h2>
-    <hr>
+<mat-card id="card" style="text-align: center;">
+    <mat-card-title>
+        Registrierung
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form #registerForm="ngForm" (ngSubmit)="register()">
+            <mat-form-field>
+                <input matInput  placeholder="Username" name="username" required [(ngModel)]="model.username">
+            </mat-form-field><br/>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Passwort" name="password" required [(ngModel)]="model.password">
+            </mat-form-field><br/>
 
-    <div>
-        <mat-form-field>
-            <input matInput  placeholder="Username" name="username" required [(ngModel)]="model.username">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="password" placeholder="Passwort" name="password" required [(ngModel)]="model.password">
-        </mat-form-field>
-
-        <button [disabled]="!registerForm.valid" mat-button type="submit" color="primary">Registrieren</button>
-    </div>
-</form>
+            <button [disabled]="!registerForm.valid" mat-button type="submit" color="primary">Registrieren</button>
+        </form>
+    </mat-card-content>
+</mat-card>
