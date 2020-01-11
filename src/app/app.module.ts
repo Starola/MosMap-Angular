@@ -18,6 +18,10 @@ import { FooterComponent } from './footer/footer.component';
 import { MapContainerComponent } from './map-container/map-container.component';
 import { JwtModule } from '@auth0/angular-jwt'
 import { environment } from 'src/environments/environment';
+import { MapComponent } from './map-container/map/map.component';
+import { MarkerService } from './_services/map-services/marker.service';
+import { PopUpService } from './_services/map-services/pop-up.service';
+import { ShapeService } from './_services/map-services/shape.service';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -31,7 +35,8 @@ export function tokenGetter(){
     HomeComponent,
     RegisterComponent,
     FooterComponent,
-    MapContainerComponent
+    MapContainerComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,10 @@ export function tokenGetter(){
     })
   ],
   providers: [
-    AuthService
+    AuthService,
+    MarkerService,
+    PopUpService,
+    ShapeService
   ],
   bootstrap: [AppComponent]
 })
