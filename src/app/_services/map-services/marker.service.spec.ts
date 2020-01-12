@@ -25,7 +25,7 @@ export class MarkerService {
         const lon = c.geometry.coordinates[1];
         const marker = L.marker([lon, lat]);
 
-        marker.bindPopup(this.popUpService.makeCapitalPopup(c));
+        marker.bindPopup(this.popUpService.makePopup(c));
         marker.addTo(map);
       }
     });
@@ -42,7 +42,7 @@ export class MarkerService {
             radius: 10
           });
 
-        circle.bindPopup(this.popUpService.makeCapitalPopup(c));
+        circle.bindPopup(this.popUpService.makePopup(c));
 
         circle.addTo(map);
       }

@@ -34,14 +34,14 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
-    this.shapeService.getStateShapes().subscribe(states => {
+    this.markerService.makeMarkers(this.map, "/assets/usa-state-capitals.geojson");
+    this.shapeService.getStateShapes('/assets/usa-states.geojson').subscribe(states => {
       this.states = states;
-      this.initStatesLayer();
+      this.initShapeLayer();
     });
   }
 
-  private initStatesLayer() {
+  private initShapeLayer() {
     const stateLayer = L.geoJSON(this.states, {
       style: (feature) => ({
         weight: 3,

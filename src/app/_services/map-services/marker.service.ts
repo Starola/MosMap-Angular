@@ -8,7 +8,7 @@ import { PopUpService } from "./pop-up.service";
 })
 export class MarkerService {
 
-  capitals: string = '/assets/usa-state-capitals.geojson';
+  //capitals: string = '/assets/usa-state-capitals.geojson';
 
   static ScaledRadius(val: number, maxVal: number): number {
     return 20 * (val / maxVal);
@@ -18,20 +18,20 @@ export class MarkerService {
               private popUpService: PopUpService) {
   }
 
-  makeCapitalMarkers(map: L.map): void {
-    this.http.get(this.capitals).subscribe((res: any) => {
+  makeMarkers(map: L.map, path: string): void {
+    this.http.get(path).subscribe((res: any) => {
       for (const c of res.features) {
         const lat = c.geometry.coordinates[0];
         const lon = c.geometry.coordinates[1];
         const marker = L.marker([lon, lat]);
 
-        marker.bindPopup(this.popUpService.makeCapitalPopup(c));
+        marker.bindPopup(this.popUpService.makePopup(c));
         marker.addTo(map);
       }
     });
   }
 
-  makeCapitalCircleMarkers(map: L.map): void {
+  /*makeCapitalCircleMarkers(map: L.map): void {
     this.http.get(this.capitals).subscribe((res: any) => {
 
       for (const c of res.features) {
@@ -48,5 +48,5 @@ export class MarkerService {
       }
     });
 
-  }
+  }*/
 }
