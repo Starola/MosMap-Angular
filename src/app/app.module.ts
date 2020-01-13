@@ -22,6 +22,8 @@ import { MapComponent } from './map-container/map/map.component';
 import { MarkerService } from './_services/map-services/marker.service';
 import { PopUpService } from './_services/map-services/pop-up.service';
 import { ShapeService } from './_services/map-services/shape.service';
+import { CategorySelectionComponent } from './map-container/category-selection/category-selection.component';
+import { SubcategoryContainerComponent } from './map-container/subcategory-container/subcategory-container.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -36,7 +38,9 @@ export function tokenGetter(){
     RegisterComponent,
     FooterComponent,
     MapContainerComponent,
-    MapComponent
+    MapComponent,
+    CategorySelectionComponent,
+    SubcategoryContainerComponent
   ],
   imports: [
     BrowserModule,

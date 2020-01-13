@@ -1,4 +1,8 @@
 <mat-card id="card" style="text-align: center;">
 Container funkt!
-<app-map></app-map>
+<app-category-selection></app-category-selection>
+<mat-grid-list cols="4" rowHeight="400px">
+    <mat-grid-tile id="map" colspan="3"><app-map></app-map></mat-grid-tile>
+    <mat-grid-tile><app-subcategory-container></app-subcategory-container></mat-grid-tile>
+</mat-grid-list>
 </mat-card>
