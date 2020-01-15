@@ -11,11 +11,11 @@ export class MapContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 400) ? 3 : 4;
+    this.breakpoint = (window.innerWidth <= 500) ? 3 : 4;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 3 : 4;
+    this.breakpoint = (event.target.innerWidth <= 500) ? 3 : 4;
   }
 
 }

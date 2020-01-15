@@ -24,6 +24,7 @@ import { PopUpService } from './_services/map-services/pop-up.service';
 import { ShapeService } from './_services/map-services/shape.service';
 import { CategorySelectionComponent } from './map-container/category-selection/category-selection.component';
 import { SubcategoryContainerComponent } from './map-container/subcategory-container/subcategory-container.component';
+import { ResponsiveColumnsDirective } from './_directives/ResponsiveColsDirective.directive';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -40,7 +41,8 @@ export function tokenGetter(){
     MapContainerComponent,
     MapComponent,
     CategorySelectionComponent,
-    SubcategoryContainerComponent
+    SubcategoryContainerComponent,
+    ResponsiveColumnsDirective
   ],
   imports: [
     BrowserModule,

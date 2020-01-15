@@ -1,8 +1,8 @@
 <mat-card id="card" style="text-align: center;">
 Container funkt!
 <app-category-selection></app-category-selection>
-<mat-grid-list  [cols]="breakpoint" rowHeight="400px" (window:resize)="onResize($event)">
+<mat-grid-list cols={{breakpoint}} rowHeight="400px" (window:resize)="onResize($event)">
     <mat-grid-tile id="map" colspan="3"><app-map></app-map></mat-grid-tile>
-    <mat-grid-tile *ngIf="breakpoint >3"><app-subcategory-container></app-subcategory-container></mat-grid-tile>
+    <mat-grid-tile *ngIf="breakpoint > 3"><app-subcategory-container></app-subcategory-container></mat-grid-tile>
 </mat-grid-list>
 </mat-card>
