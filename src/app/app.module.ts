@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,8 +25,9 @@ import { ShapeService } from './_services/map-services/shape.service';
 import { CategorySelectionComponent } from './map-container/category-selection/category-selection.component';
 import { SubcategoryContainerComponent } from './map-container/subcategory-container/subcategory-container.component';
 import { ResponsiveColumnsDirective } from './_directives/ResponsiveColsDirective.directive';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
-export function tokenGetter(){
+export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
@@ -49,7 +50,7 @@ export function tokenGetter(){
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule ,
+    FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
@@ -65,7 +66,8 @@ export function tokenGetter(){
     AuthService,
     MarkerService,
     PopUpService,
-    ShapeService
+    ShapeService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
