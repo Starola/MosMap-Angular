@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       console.log('Registrierung erfolgreich');
       this.router.navigate(['/home']);
     }, error => {
-      this.alertify.error("Registrierung fehlgeschlagen");
+      this.alertify.error(error);
       console.log(error);
     });
   }
