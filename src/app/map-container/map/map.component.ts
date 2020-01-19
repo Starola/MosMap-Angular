@@ -61,7 +61,7 @@ export class MapComponent implements AfterViewInit {
     stateLayer.bringToBack();
   }
 
-  private highlightFeature(e)  {
+  private highlightFeature(e) {
     const layer = e.target;
     layer.setStyle({
       weight: 10,
@@ -72,7 +72,7 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
-  private resetFeature(e)  {
+  private resetFeature(e) {
     const layer = e.target;
     layer.setStyle({
       weight: 3,
@@ -94,6 +94,16 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
-  }
 
+    let map = this.map
+
+    function onLocationFound(e) {
+      let radius = e.accuracy;
+      L.marker(e.latlng).addTo(map);
+      L.circle(e.latlng, radius).addTo(map);
+    }
+
+    this.map.locate({setView: true, maxZoom: 15});
+    this.map.on('locationfound', onLocationFound);
+  }
 }

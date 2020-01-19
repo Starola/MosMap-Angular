@@ -31,6 +31,12 @@ export class MarkerService {
     });
   }
 
+  setMarker(map: L.map, latlng: any): void {
+    const marker = L.marker(latlng);
+
+    marker.addTo(map);
+  }
+
   /*makeCapitalCircleMarkers(map: L.map): void {
     this.http.get(this.capitals).subscribe((res: any) => {
 
