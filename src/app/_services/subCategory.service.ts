@@ -15,7 +15,7 @@ export class SubCategoryService {
   constructor(private http: HttpClient) { }
 
   getSubCategories(categoryId): Observable<SubCategory[]> {
-    return this.http.get<SubCategory[]>(this.baseUrl + categoryId);
+    return this.http.get<SubCategory[]>(this.baseUrl + "categoryid/" + categoryId);
   }
 
   getSubCategorieById(id): Observable<SubCategory> {

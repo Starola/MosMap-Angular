@@ -13,7 +13,9 @@ export class SubcategorySingelSelectorComponent implements OnInit {
 
   constructor(
     private subCategoryService: SubCategoryService
-  ) { }
+  ) {
+    this.subCategories = [];
+   }
 
   ngOnInit() {
     this.getSubCategories(this.categoryId);
