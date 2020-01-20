@@ -1,8 +1,9 @@
-<mat-list *ngFor="let subCategory of subCategories">
-  <mat-list-item>
+
+<div *ngFor="let subCategory of subCategories">
+  <mat-list-item class="content">
     <app-subcategory-element [subCategory]="subCategory"></app-subcategory-element>
     <mat-divider></mat-divider>
   </mat-list-item>
-</mat-list>
+</div>
 
 

@@ -1,4 +1,9 @@
-<h3 mat-subheader>Unterkategorien</h3> 
-<div *ngFor="let categoryId of currentCategories">
-    <app-subcategory-singel-selector [categoryId]="categoryId"></app-subcategory-singel-selector>
-</div>
+<div class="box">
+    <mat-list flex class="b2">
+    <h3 mat-subheader>Unterkategorien</h3> 
+    <div *ngFor="let categoryId of currentCategories" class="b2">
+        <app-subcategory-singel-selector [categoryId]="categoryId"></app-subcategory-singel-selector>
+        
+    </div>
+    </mat-list>
+</div >

@@ -1,0 +1,15 @@
+.box {
+    display: flex;
+    overflow-y: auto;
+    overflow-x:hidden;
+    max-height: 400px;
+    padding-left: 2px; padding-right: 2px; margin-left: 2px; margin-right: 2px;
+    text-align: center;
+    align-content: center;
+
+}
+
+.b2{
+    width: 100%;
+}
+
