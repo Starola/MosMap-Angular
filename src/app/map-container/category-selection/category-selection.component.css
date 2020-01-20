@@ -1,0 +1,21 @@
+
+.container {
+    display: flex;
+    overflow: scroll;
+    justify-content: left;
+    padding-bottom: 10px;
+    flex: 1;
+    flex-wrap: nowrap;
+}
+
+.box { /* needs vendor prefixes */
+    display: flex;
+    flex: 1;
+}
+
+.content{
+    flex: 0 0 100%;
+    width: 100px;
+    flex-shrink: 1;
+    margin-right: 5px;
+  }

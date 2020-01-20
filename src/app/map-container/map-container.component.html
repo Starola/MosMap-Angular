@@ -1,11 +1,18 @@
 <mat-card id="card" style="text-align: center;">
-Container funkt!
-<app-category-selection></app-category-selection>
+<app-category-selection *ngIf="breakpoint > 3"></app-category-selection>
 <mat-accordion *ngIf="breakpoint == 3">
   <mat-expansion-panel>
      <mat-expansion-panel-header>
         <mat-panel-title>
-          Subkatekorien
+          Kategorien
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    <app-category-selection></app-category-selection>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+     <mat-expansion-panel-header>
+        <mat-panel-title>
+          Unterkatekorien
         </mat-panel-title>
       </mat-expansion-panel-header>
     <app-subcategory-container></app-subcategory-container>

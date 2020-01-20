@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from 'src/app/_services/category.service';
 import { Category } from 'src/app/_models/category';
 
@@ -8,6 +8,7 @@ import { Category } from 'src/app/_models/category';
   styleUrls: ['./category-selection.component.css']
 })
 export class CategorySelectionComponent implements OnInit {
+  @Output() selectedCategory = new EventEmitter();
    categories: Category[];
 
   constructor(

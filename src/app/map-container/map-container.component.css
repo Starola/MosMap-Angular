@@ -2,5 +2,6 @@ mat-grid-tile {
     background: lightblue;
   }
   mat-accordion {
-    padding: 20px;
+    padding: 5px;
+    margin: 0px;
   }
