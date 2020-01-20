@@ -24,7 +24,6 @@ export class SubcategorySingelSelectorComponent implements OnInit {
   getSubCategories(categoryId: number) {
     this.subCategoryService.getSubCategories(categoryId).subscribe((subCategories: SubCategory[]) => {
       this.subCategories = subCategories;
-      console.log(this.subCategories)
     }, error => {
       console.log(error);
     });

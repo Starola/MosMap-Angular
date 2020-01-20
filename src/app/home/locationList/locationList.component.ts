@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/_services/category.service';
 
 @Component({
   selector: 'app-locationList',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./locationList.component.css']
 })
 export class LocationListComponent implements OnInit {
-  selectedCategories: number[];
-  constructor() {
-    this.selectedCategories = [];
+  constructor(
+    private categoryService: CategoryService
+  ) {
    }
 
   ngOnInit() {

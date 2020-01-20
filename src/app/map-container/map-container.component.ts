@@ -24,6 +24,7 @@ export class MapContainerComponent implements OnInit {
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 500) ? 3 : 4;
+    this.selectedCategories = this.categoryService.curentlySelectedCategories;
   }
 
   onResize(event) {
@@ -31,9 +32,7 @@ export class MapContainerComponent implements OnInit {
   }
 
   selectCategory($event: number) {
-    var addedCategory: boolean;
-    addedCategory = this.changeCategoryList($event); 
-    this.subcategoryContainer.changeSubCategories(this.latestChangedCategory, addedCategory);
+    this.changeCategoryList($event); 
     this.categoryService.curentlySelectedCategories = this.selectedCategories;
     this.curentlySelectedCategories.emit(this.selectedCategories);
   }
