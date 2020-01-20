@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SubCategoryService } from 'src/app/_services/subCategory.service';
+import { SubCategory } from 'src/app/_models/subCategory';
 
 @Component({
   selector: 'app-subcategory-container',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subcategory-container.component.css']
 })
 export class SubcategoryContainerComponent implements OnInit {
-
-  constructor() { }
+  subCategories: SubCategory[];
+  constructor(
+    private subCategoryService: SubCategoryService
+  ) { }
 
   ngOnInit() {
+  }
+
+  getSubCategories(categoryId) {
+    this.subCategoryService.getSubCategories(categoryId).subscribe((categories: SubCategory[]) => {
+      this.subCategories = categories;
+      console.log(this.subCategories);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
