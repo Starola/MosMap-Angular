@@ -1,0 +1,4 @@
+<mat-card class="content" [ngClass]="{selected: categorySelected==true}" (click)="changetCategorySelection()">
+  <mat-card-title> {{singleCategory.categoryName}}</mat-card-title>
+  <mat-card-content> {{ singleCategory.categoryDescription }} </mat-card-content>
+</mat-card>

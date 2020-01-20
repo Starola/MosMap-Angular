@@ -1,7 +1,7 @@
 
 .container {
     display: flex;
-    overflow: scroll;
+    overflow: auto;
     justify-content: left;
     padding-bottom: 10px;
     flex: 1;

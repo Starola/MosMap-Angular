@@ -8,8 +8,9 @@ import { Category } from 'src/app/_models/category';
   styleUrls: ['./category-selection.component.css']
 })
 export class CategorySelectionComponent implements OnInit {
-  @Output() selectedCategory = new EventEmitter();
-   categories: Category[];
+  @Output() selectedCategory: EventEmitter<number> = new EventEmitter<number>();
+    
+  categories: Category[];
 
   constructor(
     private categoryService: CategoryService
@@ -27,6 +28,11 @@ export class CategorySelectionComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  selectCategory($event: number) {
+    console.log($event);
+    this.selectedCategory.emit($event); 
   }
 
 }

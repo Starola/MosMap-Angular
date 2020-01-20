@@ -1,0 +1,11 @@
+.content{
+    flex: 0 0 100%;
+    width: 100px;
+    flex-shrink: 0;
+    margin-right: 5px;
+    height: 70px;
+  }
+
+  .selected{
+      background-color: brown;
+  }
