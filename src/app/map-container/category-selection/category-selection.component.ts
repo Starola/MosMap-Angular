@@ -31,7 +31,6 @@ export class CategorySelectionComponent implements OnInit {
   }
 
   selectCategory($event: number) {
-    console.log($event);
     this.selectedCategory.emit($event); 
   }
 

@@ -27,6 +27,7 @@ import { SubcategoryContainerComponent } from './map-container/subcategory-conta
 import { ResponsiveColumnsDirective } from './_directives/ResponsiveColsDirective.directive';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { CategorySingelSelectorComponent } from './map-container/category-selection/category-singel-selector/category-singel-selector.component';
+import { SubcategorySingelSelectorComponent } from './map-container/subcategory-container/subcategory-singel-selector/subcategory-singel-selector.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +46,8 @@ export function tokenGetter() {
     CategorySelectionComponent,
     SubcategoryContainerComponent,
     ResponsiveColumnsDirective,
-    CategorySingelSelectorComponent
+    CategorySingelSelectorComponent,
+    SubcategorySingelSelectorComponent
   ],
   imports: [
     BrowserModule,

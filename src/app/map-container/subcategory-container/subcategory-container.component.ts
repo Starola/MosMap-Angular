@@ -8,21 +8,24 @@ import { SubCategory } from 'src/app/_models/subCategory';
   styleUrls: ['./subcategory-container.component.css']
 })
 export class SubcategoryContainerComponent implements OnInit {
-  subCategories: SubCategory[];
+  currentCategories: number[];
+  
   constructor(
     private subCategoryService: SubCategoryService
-  ) { }
+  ) {
+    this.currentCategories = [];
+   }
 
   ngOnInit() {
   }
 
-  getSubCategories(categoryId) {
-    this.subCategoryService.getSubCategories(categoryId).subscribe((categories: SubCategory[]) => {
-      this.subCategories = categories;
-      console.log(this.subCategories);
-    }, error => {
-      console.log(error);
-    });
+  changeSubCategories(categoryId: number, addedCategory: boolean) {
+    if(addedCategory == true){
+      this.currentCategories.push(categoryId);
+    }
+    else{
+      this.currentCategories = this.currentCategories.filter(item => item !== categoryId);
+    }
   }
 
 }

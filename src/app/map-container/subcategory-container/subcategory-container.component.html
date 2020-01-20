@@ -1,1 +1,4 @@
 <p>subcategory-container works!</p>
+<div *ngFor="let categoryId of currentCategories">
+    <app-subcategory-singel-selector [categoryId]="categoryId"></app-subcategory-singel-selector>
+</div>

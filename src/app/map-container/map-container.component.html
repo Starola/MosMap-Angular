@@ -1,15 +1,14 @@
 <mat-card id="card" style="text-align: center;">
-<app-category-selection *ngIf="breakpoint > 3"></app-category-selection>
-<mat-accordion *ngIf="breakpoint == 3">
+<mat-accordion>
   <mat-expansion-panel>
      <mat-expansion-panel-header>
         <mat-panel-title>
           Kategorien
         </mat-panel-title>
       </mat-expansion-panel-header>
-    <app-category-selection></app-category-selection>
+    <app-category-selection (selectedCategory)="selectCategory($event)"></app-category-selection>
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel *ngIf="breakpoint == 3">
      <mat-expansion-panel-header>
         <mat-panel-title>
           Unterkatekorien
