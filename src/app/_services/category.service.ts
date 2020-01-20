@@ -9,8 +9,11 @@ import { Category } from '../_models/category';
 })
 export class CategoryService {
   baseUrl = environment.apiUrl + 'category/';
+  curentlySelectedCategories: number[]
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.curentlySelectedCategories = [];
+   }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.baseUrl);

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { SubcategoryContainerComponent } from './subcategory-container/subcategory-container.component';
+import { CategoryService } from '../_services/category.service';
 
 @Component({
   selector: 'app-map-container',
@@ -16,6 +17,7 @@ export class MapContainerComponent implements OnInit {
   latestChangedCategory: number;
 
   constructor(
+    private categoryService: CategoryService
   ) {
     this.selectedCategories = [];
   }
@@ -32,6 +34,7 @@ export class MapContainerComponent implements OnInit {
     var addedCategory: boolean;
     addedCategory = this.changeCategoryList($event); 
     this.subcategoryContainer.changeSubCategories(this.latestChangedCategory, addedCategory);
+    this.categoryService.curentlySelectedCategories = this.selectedCategories;
     this.curentlySelectedCategories.emit(this.selectedCategories);
   }
 
