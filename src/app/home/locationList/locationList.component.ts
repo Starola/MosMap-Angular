@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from 'src/app/_services/category.service';
+import { Category } from 'src/app/_models/category';
 
 @Component({
   selector: 'app-locationList',

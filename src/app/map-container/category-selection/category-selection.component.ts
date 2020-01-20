@@ -18,6 +18,7 @@ export class CategorySelectionComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCategories();
+    this.categoryService.categoryChach = this.categories;
   }
 
 

@@ -9,7 +9,7 @@ import { Category } from '../_models/category';
 })
 export class CategoryService {
   baseUrl = environment.apiUrl + 'category/';
-  curentlySelectedCategories: number[]
+  curentlySelectedCategories: number[];
 
   constructor(private http: HttpClient) {
     this.curentlySelectedCategories = [];

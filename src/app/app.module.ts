@@ -30,6 +30,7 @@ import { CategorySingelSelectorComponent } from './map-container/category-select
 import { SubcategorySingelSelectorComponent } from './map-container/subcategory-container/subcategory-singel-selector/subcategory-singel-selector.component';
 import { SubcategoryElementComponent } from './map-container/subcategory-container/subcategory-singel-selector/subcategory-element/subcategory-element.component';
 import { LocationListComponent } from './home/locationList/locationList.component';
+import { LocationCategoryListComponent } from './home/locationList/locationCategoryList/locationCategoryList.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -51,7 +52,8 @@ export function tokenGetter() {
     CategorySingelSelectorComponent,
     SubcategorySingelSelectorComponent,
     SubcategoryElementComponent,
-    LocationListComponent
+    LocationListComponent,
+    LocationCategoryListComponent
   ],
   imports: [
     BrowserModule,
