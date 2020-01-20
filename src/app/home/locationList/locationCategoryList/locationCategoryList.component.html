@@ -1,3 +1,5 @@
-<div *ngFor="let location of locationList">
-  {{location.locationName}}
+<div class="container">
+<div *ngFor="let location of locationList" class="box" >
+  <app-location [location]="location" class="content"></app-location>
+</div>
 </div>
