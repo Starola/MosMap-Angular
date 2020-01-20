@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { SubcategoryContainerComponent } from './subcategory-container/subcategory-container.component';
 
 @Component({
@@ -8,6 +8,8 @@ import { SubcategoryContainerComponent } from './subcategory-container/subcatego
 })
 export class MapContainerComponent implements OnInit {
   @ViewChild(SubcategoryContainerComponent, {static: false}) subcategoryContainer: SubcategoryContainerComponent;
+  @Output() curentlySelectedCategories: EventEmitter<number[]> = new EventEmitter<number[]>();
+
 
   breakpoint: number;
   selectedCategories: number[];
@@ -30,6 +32,7 @@ export class MapContainerComponent implements OnInit {
     var addedCategory: boolean;
     addedCategory = this.changeCategoryList($event); 
     this.subcategoryContainer.changeSubCategories(this.latestChangedCategory, addedCategory);
+    this.curentlySelectedCategories.emit(this.selectedCategories);
   }
 
   changeCategoryList(changedCategory: number){

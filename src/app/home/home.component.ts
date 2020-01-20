@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LocationListComponent } from './locationList/locationList.component';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild(LocationListComponent, {static: false}) locationList: LocationListComponent;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  curentlySelectedCategories($event){
+    this.locationList.selectedCategories = $event;
   }
 
 }

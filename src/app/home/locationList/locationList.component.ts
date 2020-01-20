@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./locationList.component.css']
 })
 export class LocationListComponent implements OnInit {
-
-  constructor() { }
+  selectedCategories: number[];
+  constructor() {
+    this.selectedCategories = [];
+   }
 
   ngOnInit() {
   }
