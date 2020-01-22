@@ -34,14 +34,9 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
-    this.shapeService.getStateShapes().subscribe(states => {
-      this.states = states;
-      this.initStatesLayer();
-    });
   }
 
-  private initStatesLayer() {
+  private initShapeLayer() {
     const stateLayer = L.geoJSON(this.states, {
       style: (feature) => ({
         weight: 3,
@@ -61,7 +56,7 @@ export class MapComponent implements AfterViewInit {
     stateLayer.bringToBack();
   }
 
-  private highlightFeature(e)  {
+  private highlightFeature(e) {
     const layer = e.target;
     layer.setStyle({
       weight: 10,
@@ -72,7 +67,7 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
-  private resetFeature(e)  {
+  private resetFeature(e) {
     const layer = e.target;
     layer.setStyle({
       weight: 3,
@@ -85,8 +80,8 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [39.8282, -98.5795],
-      zoom: 3
+      center: [49.3481568, 9.1274993],
+      zoom: 13.5
     });
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -96,4 +91,15 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
+  private locateUser() {
+    let map = this.map
+    this.map.locate({setView: true, maxZoom: 15});
+    this.map.on('locationfound', onLocationFound);
+
+    function onLocationFound(e) {
+      let radius = e.accuracy;
+      L.marker(e.latlng).addTo(map);
+      L.circle(e.latlng, radius).addTo(map);
+    }
+  }
 }
