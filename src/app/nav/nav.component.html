@@ -18,6 +18,7 @@
     <button *ngIf="!loggedIn()" mat-button  routerLink="/login">Login</button>
     <button *ngIf="!loggedIn()" mat-button  routerLink="/register">Registrieren</button>
     <button *ngIf="loggedIn()" mat-button  (click)="logOut()">Logout</button>
+    <button *ngIf="isAdmin()" mat-button routerLink="/admin">Admin Übersicht</button>
 </mat-menu>
 
 

@@ -1,0 +1,7 @@
+.container {
+    height: 100%;
+}
+mat-list-item:hover {
+    font-size: 110%;
+    cursor: pointer;
+}
