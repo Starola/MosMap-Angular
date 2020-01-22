@@ -53,7 +53,11 @@ export class MapContainerComponent implements OnInit {
   }
 
   markDownGeoJSONTest(){
-    this.mapComponent.addGeoJSON(1)
+    this.mapComponent.addGeoJSON(2)
+  }
+
+  removeMarkersForCategory(){
+    this.mapComponent.removeGeoJSON(2)
   }
 
 }

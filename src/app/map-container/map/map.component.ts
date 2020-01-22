@@ -108,4 +108,8 @@ export class MapComponent implements AfterViewInit {
   addGeoJSON(categoryID: number){
     this.geoJSONProcessingService.addGeoJSON(categoryID, this.map);
   }
+
+  removeGeoJSON(categoryID: number){
+    this.geoJSONProcessingService.removeGeoJSONbyCategoryId(categoryID, this.map)
+  }
 }
