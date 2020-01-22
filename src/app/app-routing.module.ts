@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdministratorComponent } from './administrator/administrator.component';
 import { CheckLocationsComponent } from './administrator/checkLocations/checkLocations.component';
+import { AddCategoryComponent } from './administrator/addCategory/addCategory.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'admin', component: AdministratorComponent},
   {path: 'admin/checkLocations', component: CheckLocationsComponent},
+  {path: 'admin/addCategory', component: AddCategoryComponent},
+
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 

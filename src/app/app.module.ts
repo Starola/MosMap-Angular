@@ -35,6 +35,7 @@ import { LocationComponent } from './home/locationList/locationCategoryList/loca
 import { LocationSingelDetailComponent } from './locationSingelDetail/locationSingelDetail.component';
 import { AdministratorComponent } from './administrator/administrator.component';
 import { CheckLocationsComponent } from './administrator/checkLocations/checkLocations.component';
+import { AddCategoryComponent } from './administrator/addCategory/addCategory.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -61,7 +62,8 @@ export function tokenGetter() {
     LocationComponent,
     LocationSingelDetailComponent,
     AdministratorComponent,
-    CheckLocationsComponent
+    CheckLocationsComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
