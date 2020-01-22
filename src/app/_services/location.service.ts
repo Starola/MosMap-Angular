@@ -18,4 +18,8 @@ export class LocationService {
   getLocationById(id): Observable<Location> {
     return this.http.get<Location>(this.baseUrl  + id);
   }
+
+  getGeoJSON(categoryId: number): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + "geojson/categoryid/" + categoryId);
+  }
 }
