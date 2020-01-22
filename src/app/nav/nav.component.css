@@ -11,3 +11,7 @@
    z-index: 2;
    width: 100% !important;
 }
+
+.title {
+   cursor: pointer;
+}
