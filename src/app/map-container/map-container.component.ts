@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { SubcategoryContainerComponent } from './subcategory-container/subcategory-container.component';
 import { CategoryService } from '../_services/category.service';
+import { GeoJSONprocessingService } from '../_services/geo-jsonprocessing.service';
+import { MapComponent } from './map/map.component'
 
 @Component({
   selector: 'app-map-container',
@@ -9,6 +11,7 @@ import { CategoryService } from '../_services/category.service';
 })
 export class MapContainerComponent implements OnInit {
   @ViewChild(SubcategoryContainerComponent, {static: false}) subcategoryContainer: SubcategoryContainerComponent;
+  @ViewChild(MapComponent, {static: false}) mapComponent: MapComponent;
   @Output() curentlySelectedCategories: EventEmitter<number[]> = new EventEmitter<number[]>();
 
 
@@ -17,7 +20,8 @@ export class MapContainerComponent implements OnInit {
   latestChangedCategory: number;
 
   constructor(
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private geoJSONProcessingService: GeoJSONprocessingService
   ) {
     this.selectedCategories = [];
   }
@@ -32,7 +36,7 @@ export class MapContainerComponent implements OnInit {
   }
 
   selectCategory($event: number) {
-    this.changeCategoryList($event); 
+    this.changeCategoryList($event);
     this.categoryService.curentlySelectedCategories = this.selectedCategories;
     this.curentlySelectedCategories.emit(this.selectedCategories);
   }
@@ -48,6 +52,8 @@ export class MapContainerComponent implements OnInit {
     }
   }
 
-  
+  markDownGeoJSONTest(){
+    this.mapComponent.addGeoJSON(1)
+  }
 
 }

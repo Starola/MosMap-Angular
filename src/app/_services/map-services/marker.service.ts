@@ -15,7 +15,8 @@ export class MarkerService {
   }
 
   constructor(private http: HttpClient,
-              private popUpService: PopUpService) {
+              private popUpService: PopUpService,
+              ) {
   }
 
   makeMarkers(map: L.map, path: string): void {
