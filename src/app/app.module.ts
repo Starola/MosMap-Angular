@@ -32,6 +32,8 @@ import { SubcategoryElementComponent } from './map-container/subcategory-contain
 import { LocationListComponent } from './home/locationList/locationList.component';
 import { LocationCategoryListComponent } from './home/locationList/locationCategoryList/locationCategoryList.component';
 import { LocationComponent } from './home/locationList/locationCategoryList/location/location.component';
+import { LocationSingelDetailComponent } from './locationSingelDetail/locationSingelDetail.component';
+import { AdministratorComponent } from './administrator/administrator.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -55,7 +57,9 @@ export function tokenGetter() {
     SubcategoryElementComponent,
     LocationListComponent,
     LocationCategoryListComponent,
-    LocationComponent
+    LocationComponent,
+    LocationSingelDetailComponent,
+    AdministratorComponent
   ],
   imports: [
     BrowserModule,
