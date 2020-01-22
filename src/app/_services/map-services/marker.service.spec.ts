@@ -1,52 +1,12 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import * as L from 'leaflet'
-import { PopUpService } from "./pop-up.service";
+import { TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class MarkerService {
+import { MarkerService } from './marker.service';
 
-  capitals: string = '/assets/usa-state-capitals.geojson';
+describe('MarkerService', () => {
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  static ScaledRadius(val: number, maxVal: number): number {
-    return 20 * (val / maxVal);
-  }
-
-  constructor(private http: HttpClient,
-              private popUpService: PopUpService) {
-  }
-
-  makeCapitalMarkers(map: L.map): void {
-    this.http.get(this.capitals).subscribe((res: any) => {
-      for (const c of res.features) {
-        const lat = c.geometry.coordinates[0];
-        const lon = c.geometry.coordinates[1];
-        const marker = L.marker([lon, lat]);
-
-        marker.bindPopup(this.popUpService.makeCapitalPopup(c));
-        marker.addTo(map);
-      }
-    });
-  }
-
-  makeCapitalCircleMarkers(map: L.map): void {
-    this.http.get(this.capitals).subscribe((res: any) => {
-
-      for (const c of res.features) {
-        const lat = c.geometry.coordinates[0];
-        const lon = c.geometry.coordinates[1];
-        const circle = L.circleMarker([lon, lat],
-          {
-            radius: 10
-          });
-
-        circle.bindPopup(this.popUpService.makeCapitalPopup(c));
-
-        circle.addTo(map);
-      }
-    });
-
-  }
-}
+  it('should be created', () => {
+    const service: MarkerService = TestBed.get(MarkerService);
+    expect(service).toBeTruthy();
+  });
+});

@@ -1,16 +1,12 @@
-import { Injectable } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PopUpService {
+import { PopUpService } from './pop-up.service';
 
-  constructor() { }
+describe('PopUpService', () => {
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  makeCapitalPopup(data: any): string {
-    return `` +
-      `<div>Capital: ${ data.properties.name }</div>` +
-      `<div>State: ${ data.properties.state }</div>` +
-      `<div>Population: ${ data.population }</div>`
-  }
-}
+  it('should be created', () => {
+    const service: PopUpService = TestBed.get(PopUpService);
+    expect(service).toBeTruthy();
+  });
+});

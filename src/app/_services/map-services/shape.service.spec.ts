@@ -1,15 +1,12 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ShapeService {
+import { ShapeService } from './shape.service';
 
-  constructor(private http: HttpClient) { }
+describe('ShapeService', () => {
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  getStateShapes(): Observable<any> {
-    return this.http.get('/assets/usa-states.geojson');
-  }
-}
+  it('should be created', () => {
+    const service: ShapeService = TestBed.get(ShapeService);
+    expect(service).toBeTruthy();
+  });
+});
