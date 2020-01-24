@@ -45,19 +45,12 @@ export class MapContainerComponent implements OnInit {
     this.latestChangedCategory = changedCategory;
     if(this.selectedCategories.includes(changedCategory)){
       this.selectedCategories = this.selectedCategories.filter(item => item !== changedCategory);
+      this.mapComponent.removeGeoJSON(changedCategory);
       return false;
     } else {
       this.selectedCategories.push(changedCategory);
+      this.mapComponent.addGeoJSON(changedCategory);
       return true;
     }
   }
-
-  markDownGeoJSONTest(){
-    this.mapComponent.addGeoJSON(2)
-  }
-
-  removeMarkersForCategory(){
-    this.mapComponent.removeGeoJSON(2)
-  }
-
 }

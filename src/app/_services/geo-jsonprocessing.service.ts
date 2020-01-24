@@ -40,9 +40,10 @@ export class GeoJSONprocessingService {
         let marker = L.marker([lon, lat]).addTo(this.group);
 
         this.group.eachLayer(function (layer) {
-          let layerID = categoryId
-          layer.layerID = layerID;
-          console.log(layer.layerID)
+          if (layer.layerID == null) {
+            let layerID = categoryId
+            layer.layerID = layerID;
+          }
         })
       }
     })
@@ -52,17 +53,10 @@ export class GeoJSONprocessingService {
   removeGeoJSONbyCategoryId(categoryId: number, map: L.map) {
     //map.removeLayer(locationsLayer)
     this.group.eachLayer(function (layer) {
-      if(layer.layerID == categoryId){
+      console.log(layer.layerID)
+      if (layer.layerID === categoryId) {
         map.removeLayer(layer)
       }
     })
-  }
-
-  addGeoJSONSingle(locationID: number, geojson: any) {
-
-  }
-
-  removeGeoJSONbyLocationId(locationId: number, map: L.map) {
-
   }
 }
