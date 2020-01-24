@@ -10,12 +10,13 @@ export class MarkerService {
 
   //capitals: string = '/assets/usa-state-capitals.geojson';
 
-  static ScaledRadius(val: number, maxVal: number): number {
-    return 20 * (val / maxVal);
+  constructor(private http: HttpClient,
+              private popUpService: PopUpService,
+              ) {
   }
 
-  constructor(private http: HttpClient,
-              private popUpService: PopUpService) {
+  static ScaledRadius(val: number, maxVal: number): number {
+    return 20 * (val / maxVal);
   }
 
   makeMarkers(map: L.map, path: string): void {

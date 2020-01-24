@@ -1,24 +1,28 @@
 <mat-card id="card" style="text-align: center;">
-<mat-accordion>
-  <mat-expansion-panel>
-     <mat-expansion-panel-header>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
         <mat-panel-title>
           Kategorien
         </mat-panel-title>
       </mat-expansion-panel-header>
-    <app-category-selection (selectedCategory)="selectCategory($event)"></app-category-selection>
-  </mat-expansion-panel>
-  <mat-expansion-panel *ngIf="breakpoint == 3">
-     <mat-expansion-panel-header>
+      <app-category-selection (selectedCategory)="selectCategory($event)"></app-category-selection>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="breakpoint == 3">
+      <mat-expansion-panel-header>
         <mat-panel-title>
           Unterkatekorien
         </mat-panel-title>
       </mat-expansion-panel-header>
-    <app-subcategory-container></app-subcategory-container>
-  </mat-expansion-panel>
-</mat-accordion>
-<mat-grid-list cols={{breakpoint}} rowHeight="400px" (window:resize)="onResize($event)">
-    <mat-grid-tile id="map" colspan="3"><app-map></app-map></mat-grid-tile>
-    <mat-grid-tile *ngIf="breakpoint > 3" class="subCategory"><app-subcategory-container class="b2"></app-subcategory-container></mat-grid-tile>
-</mat-grid-list>
+      <app-subcategory-container></app-subcategory-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-grid-list cols={{breakpoint}} rowHeight="400px" (window:resize)="onResize($event)">
+    <mat-grid-tile id="map" colspan="3">
+      <app-map></app-map>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="breakpoint > 3" class="subCategory">
+      <app-subcategory-container class="b2"></app-subcategory-container>
+    </mat-grid-tile>
+  </mat-grid-list>
 </mat-card>

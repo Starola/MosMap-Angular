@@ -2,6 +2,7 @@ import {AfterViewInit, Component} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from "../../_services/map-services/marker.service";
 import {ShapeService} from "../../_services/map-services/shape.service";
+import {GeoJSONprocessingService } from '../../_services/geo-jsonprocessing.service'
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -25,11 +26,12 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 
 export class MapComponent implements AfterViewInit {
-  private map;
+  public map;
   private states;
 
   constructor(private markerService: MarkerService,
-              private shapeService: ShapeService) {
+              private shapeService: ShapeService,
+              private geoJSONProcessingService: GeoJSONprocessingService) {
   }
 
   ngAfterViewInit(): void {
@@ -101,5 +103,13 @@ export class MapComponent implements AfterViewInit {
       L.marker(e.latlng).addTo(map);
       L.circle(e.latlng, radius).addTo(map);
     }
+  }
+
+  addGeoJSON(categoryID: number){
+    this.geoJSONProcessingService.addGeoJSON(categoryID, this.map);
+  }
+
+  removeGeoJSON(categoryID: number){
+    this.geoJSONProcessingService.removeGeoJSONbyCategoryId(categoryID, this.map)
   }
 }
