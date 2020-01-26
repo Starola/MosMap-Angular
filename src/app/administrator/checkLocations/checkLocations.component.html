@@ -1,3 +1,9 @@
-<p>
-  Funkt
-  </p>
+<mat-card>
+  <div class="list">
+    <h3 mat-subheader>Nicht kontrollierte Locations</h3>
+    <div *ngFor="let location of locationsToCheckList">
+      <app-locationToCheckSingle [location]="location" class="listItem"></app-locationToCheckSingle>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</mat-card>

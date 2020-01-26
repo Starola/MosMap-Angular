@@ -36,6 +36,8 @@ import { LocationSingelDetailComponent } from './locationSingelDetail/locationSi
 import { AdministratorComponent } from './administrator/administrator.component';
 import { CheckLocationsComponent } from './administrator/checkLocations/checkLocations.component';
 import { AddCategoryComponent } from './administrator/addCategory/addCategory.component';
+import { AuthInterceptor, AuthInterceptorProvider } from './_services/authInterceptor';
+import { LocationToCheckSingleComponent } from './administrator/checkLocations/locationToCheckSingle/locationToCheckSingle.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -63,7 +65,8 @@ export function tokenGetter() {
     LocationSingelDetailComponent,
     AdministratorComponent,
     CheckLocationsComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    LocationToCheckSingleComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ export function tokenGetter() {
     MarkerService,
     PopUpService,
     ShapeService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    AuthInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
