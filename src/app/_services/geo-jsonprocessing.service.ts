@@ -50,7 +50,6 @@ export class GeoJSONprocessingService {
             layer.layerCategoryID = categoryId;
             if (layer.layerLocationID == null) {
               layer.layerLocationID = c.properties.id;
-              console.log(layer.layerLocationID)
             }
           }
         })
@@ -70,7 +69,6 @@ export class GeoJSONprocessingService {
   addGeoJSONSingle(locationId: number, map: L.map) {
     this.locationService.getLocationById(locationId).subscribe((res: any) => {
       this.group.addTo(map);
-      console.log(res)
 
       const lat = res.latitude
       const lon = res.longitude
@@ -85,9 +83,6 @@ export class GeoJSONprocessingService {
           }
         }
       })
-
-      console.log(lat)
-      console.log(lon)
     })
   }
 
