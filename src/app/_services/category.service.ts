@@ -19,7 +19,7 @@ export class CategoryService {
     return this.http.get<Category[]>(this.baseUrl);
   }
 
-  getCategorieById(id): Observable<Category> {
+  getCategorieById(id: number): Observable<Category> {
     return this.http.get<Category>(this.baseUrl  + id);
   }
 }

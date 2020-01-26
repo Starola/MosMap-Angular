@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LocationForCheck } from '../_models/locationForCheck';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  getUncheckedLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(this.baseUrl + "uncheckedlocations");
+  getUncheckedLocations(): Observable<LocationForCheck[]> {
+    return this.http.get<LocationForCheck[]>(this.baseUrl + "uncheckedlocations");
   }
 
 }

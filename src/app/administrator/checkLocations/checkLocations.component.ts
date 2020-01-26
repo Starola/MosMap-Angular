@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/_services/admin.service';
+import { LocationForCheck } from 'src/app/_models/locationForCheck';
 
 @Component({
   selector: 'app-checkLocations',
@@ -7,7 +8,7 @@ import { AdminService } from 'src/app/_services/admin.service';
   styleUrls: ['./checkLocations.component.css']
 })
 export class CheckLocationsComponent implements OnInit {
-  locationsToCheckList: Location[];
+  locationsToCheckList: LocationForCheck[];
 
   constructor(
     private adminService: AdminService
@@ -18,9 +19,9 @@ export class CheckLocationsComponent implements OnInit {
   }
 
   getLocationsToCheck() {
-    this.adminService.getUncheckedLocations().subscribe((locations: Location[]) => {
+    this.adminService.getUncheckedLocations().subscribe((locations: LocationForCheck[]) => {
       this.locationsToCheckList = locations;
-      console.log(locations)
+      console.log(this.locationsToCheckList)
     }, error => {
       console.log(error);
     });
