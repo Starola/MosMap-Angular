@@ -35,14 +35,18 @@ export class GeoJSONprocessingService {
     this.locationService.getGeoJSON(categoryId).subscribe((res: any) => {
       this.group.addTo(map);
       for (const c of res) {
+        console.log(c)
         const lat = c.geometry.coordinates[0];
         const lon = c.geometry.coordinates[1];
         let marker = L.marker([lon, lat]).addTo(this.group);
 
         this.group.eachLayer(function (layer) {
-          if (layer.layerID == null) {
-            let layerID = categoryId
-            layer.layerID = layerID;
+          if (layer.layerCategoryID == null) {
+            layer.layerCategoryID = categoryId;
+            if (layer.layerLocationID == null) {
+              layer.layerLocationID = c.properties.id;
+              console.log(layer.layerLocationID)
+            }
           }
         })
       }
@@ -51,10 +55,40 @@ export class GeoJSONprocessingService {
 
 
   removeGeoJSONbyCategoryId(categoryId: number, map: L.map) {
-    //map.removeLayer(locationsLayer)
     this.group.eachLayer(function (layer) {
-      console.log(layer.layerID)
-      if (layer.layerID === categoryId) {
+      if (layer.layerCategoryID === categoryId) {
+        map.removeLayer(layer)
+      }
+    })
+  }
+
+  addGeoJSONSingle(locationId: number, map: L.map) {
+    this.locationService.getLocationById(locationId).subscribe((res: any) => {
+      this.group.addTo(map);
+      console.log(res)
+
+      const lat = res.latitude
+      const lon = res.longitude
+
+      let marker = L.marker([lat, lon]).addTo(this.group)
+
+      this.group.eachLayer(function (layer) {
+        if (layer.layerCategoryID == null) {
+          layer.layerCategoryID = res.categoryId
+          if (layer.locationID == null) {
+            layer.locationID = locationId;
+          }
+        }
+      })
+
+      console.log(lat)
+      console.log(lon)
+    })
+  }
+
+  removeGeoJSONSingle(locationId: number, map: L.map) {
+    this.group.eachLayer(function (layer){
+      if (layer.layerLocationID === locationId) {
         map.removeLayer(layer)
       }
     })

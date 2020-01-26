@@ -2,7 +2,7 @@ import {AfterViewInit, Component} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from "../../_services/map-services/marker.service";
 import {ShapeService} from "../../_services/map-services/shape.service";
-import {GeoJSONprocessingService } from '../../_services/geo-jsonprocessing.service'
+import {GeoJSONprocessingService} from '../../_services/geo-jsonprocessing.service'
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -94,7 +94,7 @@ export class MapComponent implements AfterViewInit {
   }
 
   private locateUser() {
-    let map = this.map
+    let map = this.map;
     this.map.locate({setView: true, maxZoom: 15});
     this.map.on('locationfound', onLocationFound);
 
@@ -105,11 +105,19 @@ export class MapComponent implements AfterViewInit {
     }
   }
 
-  addGeoJSON(categoryID: number){
+  addGeoJSON(categoryID: number) {
     this.geoJSONProcessingService.addGeoJSON(categoryID, this.map);
   }
 
-  removeGeoJSON(categoryID: number){
+  removeGeoJSON(categoryID: number) {
     this.geoJSONProcessingService.removeGeoJSONbyCategoryId(categoryID, this.map)
+  }
+
+  addSingleGeoJSON(locationID: number) {
+    this.geoJSONProcessingService.addGeoJSONSingle(locationID, this.map)
+  }
+
+  removeSingleGeoJSON(locationId: number) {
+    this.geoJSONProcessingService.removeGeoJSONSingle(locationId, this.map)
   }
 }

@@ -1,6 +1,10 @@
 <div class="map-container">
-  <button mat-button type="submit" color="primary" (click)="locateUser()">Wo bin ich?</button>
   <div class="map-frame">
     <div id="map"></div>
+    <div class="leaflet-bottom leaflet-left" (click)="this.locateUser()" block>Action!
+    </div>
   </div>
 </div>
+
+
+
