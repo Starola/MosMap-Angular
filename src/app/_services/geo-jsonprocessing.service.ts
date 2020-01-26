@@ -35,10 +35,15 @@ export class GeoJSONprocessingService {
     this.locationService.getGeoJSON(categoryId).subscribe((res: any) => {
       this.group.addTo(map);
       for (const c of res) {
-        console.log(c)
         const lat = c.geometry.coordinates[0];
         const lon = c.geometry.coordinates[1];
-        let marker = L.marker([lon, lat]).addTo(this.group);
+        //let marker = L.marker([lon, lat]);
+        //marker.addTo(this.group);
+
+        let popup = L.popup({autoClose: false, closeOnClick: false, closeButton: false})
+          .setLatLng([lon, lat])
+          .setContent(c.properties.name)
+          .addTo(this.group)
 
         this.group.eachLayer(function (layer) {
           if (layer.layerCategoryID == null) {

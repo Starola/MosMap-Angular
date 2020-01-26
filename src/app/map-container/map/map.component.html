@@ -1,7 +1,9 @@
 <div class="map-container">
   <div class="map-frame">
-    <div id="map"></div>
-    <div class="leaflet-bottom leaflet-left" (click)="this.locateUser()" block>Action!
+    <div id="map">
+    </div>
+    <div class="leaflet-top leaflet-right">
+      <button mat-icon-button id="locateUser" (click)="this.locateUser()"><mat-icon>my_location</mat-icon></button>
     </div>
   </div>
 </div>
