@@ -1,0 +1,16 @@
+
+    <mat-card id="card" style="text-align: center;">
+      <mat-card-title>
+          Kategorie löschen
+          <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+          <div *ngFor="let category of categories">
+            <mat-card class="content">
+              Kategorie-Id: {{category.id}} <br>
+              Kategorie: {{category.categoryName}} <br>
+              <button mat-flat-button color="warn" (click)="deleteCategory(category.id)">Kategorie löschen</button>
+            </mat-card>
+          </div>
+      </mat-card-content>
+  </mat-card>

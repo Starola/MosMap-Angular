@@ -1,3 +1,18 @@
-<p>
-  addCategory works!
-</p>
+
+    <mat-card id="card" style="text-align: center;">
+      <mat-card-title>
+          Kategorie anlegen
+          <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+          <form #categoryForm="ngForm" (ngSubmit)="createCategory()">
+              <mat-form-field>
+                  <input matInput  placeholder="Kategorie Name" name="categoryName" required [(ngModel)]="category.CategoryName">
+              </mat-form-field><br/>
+              <mat-form-field>
+                  <input matInput  placeholder="Kategorie Beschreibung" name="categoryDescription" required [(ngModel)]="category.categoryDescription">
+              </mat-form-field><br/>
+              <button [disabled]="!categoryForm.valid" mat-button type="submit" color="primary">Kategorie erstellen</button>
+          </form>
+      </mat-card-content>
+  </mat-card>

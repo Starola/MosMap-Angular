@@ -38,6 +38,7 @@ import { CheckLocationsComponent } from './administrator/checkLocations/checkLoc
 import { AddCategoryComponent } from './administrator/addCategory/addCategory.component';
 import { AuthInterceptor, AuthInterceptorProvider } from './_services/authInterceptor';
 import { LocationToCheckSingleComponent } from './administrator/checkLocations/locationToCheckSingle/locationToCheckSingle.component';
+import { DeleteCategoryComponent } from './administrator/deleteCategory/deleteCategory.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -66,6 +67,7 @@ export function tokenGetter() {
     AdministratorComponent,
     CheckLocationsComponent,
     AddCategoryComponent,
+    DeleteCategoryComponent,
     LocationToCheckSingleComponent
   ],
   imports: [
