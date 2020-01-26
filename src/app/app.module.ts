@@ -36,6 +36,7 @@ import { LocationSingelDetailComponent } from './locationSingelDetail/locationSi
 import { AdministratorComponent } from './administrator/administrator.component';
 import { CheckLocationsComponent } from './administrator/checkLocations/checkLocations.component';
 import { AddCategoryComponent } from './administrator/addCategory/addCategory.component';
+import { AuthInterceptor, AuthInterceptorProvider } from './_services/authInterceptor';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -87,7 +88,8 @@ export function tokenGetter() {
     MarkerService,
     PopUpService,
     ShapeService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    AuthInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
