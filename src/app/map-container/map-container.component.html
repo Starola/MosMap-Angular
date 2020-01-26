@@ -1,4 +1,6 @@
 <mat-card id="card" style="text-align: center;">
+  <button mat-button (click)="this.testButton()">Test</button>
+
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -11,7 +13,7 @@
     <mat-expansion-panel *ngIf="breakpoint == 3">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Unterkatekorien
+          Unterkategorien
         </mat-panel-title>
       </mat-expansion-panel-header>
       <app-subcategory-container></app-subcategory-container>
@@ -26,3 +28,4 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
+
