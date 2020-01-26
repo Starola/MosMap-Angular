@@ -63,7 +63,7 @@ export function tokenGetter() {
     LocationSingelDetailComponent,
     AdministratorComponent,
     CheckLocationsComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,
