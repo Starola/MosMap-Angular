@@ -2,7 +2,7 @@
   <div class="list">
     <h3 mat-subheader>Nicht kontrollierte Locations</h3>
     <div *ngFor="let location of locationsToCheckList">
-      <app-locationToCheckSingle *ngIf="location" [location]="location" class="listItem"></app-locationToCheckSingle>
+      <app-locationToCheckSingle *ngIf="location" [location]="location" (locationChecked)="locationChecked($event)" class="listItem"></app-locationToCheckSingle>
       <mat-divider></mat-divider>
     </div>
   </div>

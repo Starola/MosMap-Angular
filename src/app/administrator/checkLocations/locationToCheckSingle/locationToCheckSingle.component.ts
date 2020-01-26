@@ -39,13 +39,13 @@ export class LocationToCheckSingleComponent implements OnInit, OnChanges {
   }
 
   locationDeclined(){
-    this.checkedLocation.Accepted = true;
+    this.checkedLocation.Accepted = false;
     this.setLocationDecission();
   }
 
-  setLocationDecission(){
+  setLocationDecission() {
     this.checkedLocation.LocationId = this.location.id;
-    this.adminService.setLocationChecked(this.checkedLocation).subscribe(() =>{
+    this.adminService.setLocationChecked(this.checkedLocation).subscribe(next => {
       this.locationChecked.emit(this.location.id);
     }, error => {
       console.log(error);

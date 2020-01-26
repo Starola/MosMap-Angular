@@ -27,6 +27,10 @@ export class CheckLocationsComponent implements OnInit {
     });
   }
 
+  locationChecked($event) {
+    this.locationsToCheckList = this.locationsToCheckList.filter(item => item.id != $event);
+  }
+
 
 
 }
