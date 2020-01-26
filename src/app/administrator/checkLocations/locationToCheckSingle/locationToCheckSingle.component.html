@@ -3,5 +3,7 @@
   Beschreibung: {{location.locationDescription}} <br>
   Adresse: {{location.address}} <br>
   Latitude: {{location.latitude}}, Longitude: {{location.longitude}} <br>
-  Kategorie: {{location.categoryId}} 
+  Kategorie: {{location.categoryName}} (Id: {{location.categoryId}}) <br>
+  <button mat-flat-button color="primary" (click)="locationAccepted()">Akzeptieren</button>
+  <button mat-flat-button color="warn" (click)="locationDeclined()">Ablehnen</button>
 </mat-card>
