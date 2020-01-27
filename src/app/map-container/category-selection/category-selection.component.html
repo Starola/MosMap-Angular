@@ -2,7 +2,7 @@
 <div>
     <div class="container" width="80%">
         <div *ngFor="let category of categories" fxLayout="row">
-            <app-category-singel-selector (selectedCategory)="selectCategory($event)" [singleCategory]="category"></app-category-singel-selector>
+            <app-category-singel-selector class="appCategorySelector"(selectedCategory)="selectCategory($event)" [singleCategory]="category"></app-category-singel-selector>
         </div>
     </div>
 </div>

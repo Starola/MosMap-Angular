@@ -8,7 +8,7 @@ import { LocationService } from 'src/app/_services/location.service';
 })
 export class LocationCategoryListComponent implements OnInit {
   @Input() categoryId: number;
-  
+
   locationList: Location[];
 
   constructor(
@@ -22,8 +22,6 @@ export class LocationCategoryListComponent implements OnInit {
   getLocations() {
     this.locationService.getLocations(this.categoryId).subscribe((locations: Location[]) => {
       this.locationList = locations;
-      console.log("Test");
-      console.log(locations)
     }, error => {
       console.log(error);
     });

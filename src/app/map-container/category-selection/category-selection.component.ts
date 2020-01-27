@@ -9,7 +9,7 @@ import { Category } from 'src/app/_models/category';
 })
 export class CategorySelectionComponent implements OnInit {
   @Output() selectedCategory: EventEmitter<number> = new EventEmitter<number>();
-    
+
   categories: Category[];
 
   constructor(
@@ -24,14 +24,13 @@ export class CategorySelectionComponent implements OnInit {
   getAllCategories() {
     this.categoryService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
-      console.log(this.categories);
     }, error => {
       console.log(error);
     });
   }
 
   selectCategory($event: number) {
-    this.selectedCategory.emit($event); 
+    this.selectedCategory.emit($event);
   }
 
 }

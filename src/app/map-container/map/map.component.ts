@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import {MarkerService} from "../../_services/map-services/marker.service";
 import {ShapeService} from "../../_services/map-services/shape.service";
 import {GeoJSONprocessingService} from '../../_services/geo-jsonprocessing.service'
+import {OpenStreetMapProvider} from 'leaflet-geosearch';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -92,6 +93,11 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
+
+    const provider = new OpenStreetMapProvider();
+
+    const results = provider.search({query: "Rathaus Mosbach"}).then(function (result) {
+    })
   }
 
   private locateUser() {
