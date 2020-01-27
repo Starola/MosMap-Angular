@@ -1,4 +1,6 @@
-
+.appCategorySelector{
+  cursor: pointer;
+  }
 .container {
     display: flex;
     overflow: auto;
@@ -15,7 +17,7 @@
 
 .content{
     flex: 0 0 100%;
-    width: 100px;
+
     flex-shrink: 1;
     margin-right: 5px;
   }

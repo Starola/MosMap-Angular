@@ -9,6 +9,7 @@ import { AddCategoryComponent } from './administrator/addCategory/addCategory.co
 import { DeleteCategoryComponent } from './administrator/deleteCategory/deleteCategory.component';
 import { SubmitLocationComponent } from './submitLocation/submitLocation.component';
 
+import { LocationSingelDetailComponent } from './locationSingelDetail/locationSingelDetail.component'
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'admin/addCategory', component: AddCategoryComponent},
   {path: 'admin/deleteCategory', component: DeleteCategoryComponent},
   {path: 'submitLocation', component: SubmitLocationComponent}, 
+  {path: 'locationSingelDetail/:id', component: LocationSingelDetailComponent},
 
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
