@@ -7,6 +7,7 @@ import { AdministratorComponent } from './administrator/administrator.component'
 import { CheckLocationsComponent } from './administrator/checkLocations/checkLocations.component';
 import { AddCategoryComponent } from './administrator/addCategory/addCategory.component';
 import { DeleteCategoryComponent } from './administrator/deleteCategory/deleteCategory.component';
+import { SubmitLocationComponent } from './submitLocation/submitLocation.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'admin/checkLocations', component: CheckLocationsComponent},
   {path: 'admin/addCategory', component: AddCategoryComponent},
   {path: 'admin/deleteCategory', component: DeleteCategoryComponent},
+  {path: 'submitLocation', component: SubmitLocationComponent}, 
 
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

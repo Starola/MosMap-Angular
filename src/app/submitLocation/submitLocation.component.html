@@ -1,0 +1,71 @@
+
+<mat-horizontal-stepper>  
+  <mat-step [stepControl]="basicdata" label="Basisinformation">  
+    <form [formGroup]="basicdata">  
+      <ng-template matStepLabel></ng-template>  
+      <div>  
+        <div>  
+          <mat-form-field>  
+            <input matInput placeholder="Bezeichnung" formControlName="name">  
+          </mat-form-field>  
+        </div>  
+        <div>  
+          <mat-form-field>  
+            <input matInput placeholder="Adresse der Location" formControlName="adress">  
+          </mat-form-field>  
+        </div>  
+        <div>  
+          <mat-form-field>  
+              <textarea matInput placeholder="Beschreibung" formControlName="description">
+              </textarea>
+          </mat-form-field>  
+        </div>
+        <div>  
+          <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
+          <button mat-raised-button color="primary" matStepperNext>Weiter</button>  
+        </div>   
+      </div>  
+      <!-- <button mat-raised-button color="primary" matStepperNext>Next</button> -->  
+    </form>  
+  </mat-step>  
+  <mat-step label="Koordinaten">  
+    <form [formGroup]="coordinates">  
+      <ng-template matStepLabel></ng-template>  
+      <div>  
+        <div>  
+          <mat-form-field>  
+            <input matInput placeholder="Teil 1" formControlName="latitude">  
+          </mat-form-field>  
+        </div>  
+        <div>  
+          <mat-form-field>  
+            <input matInput placeholder="Teil 2" formControlName="longitude">  
+          </mat-form-field>  
+        </div>   
+        <div>  
+          <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
+          <button mat-raised-button color="primary" matStepperNext>Weiter</button>  
+        </div>   
+      </div>  
+    </form>  
+  </mat-step>
+  <mat-step>
+      <mat-label>Kategorie</mat-label>
+      <mat-select style="width: 100px;"  [(ngModel)]="selectedValue" name="category">
+        <mat-option *ngFor="let category of categories">
+          {{category.id}}
+        </mat-option>
+      </mat-select>
+      <mat-label>Subkategorie</mat-label>
+      <mat-select style="width: 100px; ">
+        <mat-label>Favorite food</mat-label>
+  <mat-select [(ngModel)]="selectedValue" name="food">
+
+  </mat-select>
+      </mat-select>
+  </mat-step>
+  <mat-step label="Übersicht">
+    <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Previous</button>  
+    <button mat-raised-button color="primary" (click)="add()">Save</button>  
+  </mat-step>  
+</mat-horizontal-stepper>  
