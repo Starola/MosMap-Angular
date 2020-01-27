@@ -34,12 +34,12 @@
       <div>  
         <div>  
           <mat-form-field>  
-            <input matInput placeholder="Teil 1" formControlName="latitude">  
+            <input matInput placeholder="Latitude" formControlName="latitude">  
           </mat-form-field>  
         </div>  
         <div>  
           <mat-form-field>  
-            <input matInput placeholder="Teil 2" formControlName="longitude">  
+            <input matInput placeholder="Longitude" formControlName="longitude">  
           </mat-form-field>  
         </div>   
         <div>  
@@ -50,22 +50,25 @@
     </form>  
   </mat-step>
   <mat-step>
+    <mat-form-field>
       <mat-label>Kategorie</mat-label>
-      <mat-select style="width: 100px;"  [(ngModel)]="selectedValue" name="category">
-        <mat-option *ngFor="let category of categories">
-          {{category.id}}
+      <mat-select style="width: 100px;"  name="category" [(ngModel)]="selectedCategory" (ngModelChange)="getSubCategories()">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.categoryName}}
         </mat-option>
       </mat-select>
-      <mat-label>Subkategorie</mat-label>
-      <mat-select style="width: 100px; ">
-        <mat-label>Favorite food</mat-label>
-  <mat-select [(ngModel)]="selectedValue" name="food">
-
-  </mat-select>
-      </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Unterkategorien</mat-label>
+        <mat-select style="width: 100px;"  name="subcategory"[formControl]="selectedSubCategories" multiple>
+          <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
+            {{subCategory.subCategoryName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
   </mat-step>
   <mat-step label="Übersicht">
     <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Previous</button>  
-    <button mat-raised-button color="primary" (click)="add()">Save</button>  
+    <button mat-raised-button color="primary" (click)="saveLocation()">Save</button>  
   </mat-step>  
 </mat-horizontal-stepper>  

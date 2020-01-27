@@ -1,6 +1,6 @@
 export interface SubCategory {
 
-    Id: number;
+    id: number;
     SubCategoryName: string;
     SubCategoryDescription: string;
     CategoryId: number;
