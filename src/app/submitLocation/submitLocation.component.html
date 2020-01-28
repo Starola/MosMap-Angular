@@ -1,74 +1,119 @@
 
 <mat-horizontal-stepper>  
-  <mat-step [stepControl]="basicdata" label="Basisinformation">  
-    <form [formGroup]="basicdata">  
-      <ng-template matStepLabel></ng-template>  
-      <div>  
-        <div>  
-          <mat-form-field>  
-            <input matInput placeholder="Bezeichnung" formControlName="name">  
-          </mat-form-field>  
-        </div>  
-        <div>  
-          <mat-form-field>  
-            <input matInput placeholder="Adresse der Location" formControlName="adress">  
-          </mat-form-field>  
-        </div>  
-        <div>  
-          <mat-form-field>  
-              <textarea matInput placeholder="Beschreibung" formControlName="description">
-              </textarea>
-          </mat-form-field>  
-        </div>
-        <div>  
-          <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
-          <button mat-raised-button color="primary" matStepperNext>Weiter</button>  
-        </div>   
-      </div>  
-      <!-- <button mat-raised-button color="primary" matStepperNext>Next</button> -->  
-    </form>  
+  <mat-step [stepControl]="basicdata" label="Basisinformation"> 
+    <mat-card id="card" style="text-align: center;">
+      <mat-card-title>
+          Allgemeine Informationen
+        <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content> 
+        <form [formGroup]="basicdata" #basicdataForm="ngForm">  
+          <ng-template matStepLabel></ng-template>  
+          <div>  
+            <div>  
+              <mat-form-field>  
+                <input matInput placeholder="Bezeichnung" formControlName="name" required>  
+              </mat-form-field>  
+            </div>  
+            <div>  
+              <mat-form-field>  
+                <input matInput placeholder="Adresse der Location" formControlName="adress">  
+              </mat-form-field>  
+            </div>  
+            <div>  
+              <mat-form-field>  
+                  <textarea matInput placeholder="Beschreibung" formControlName="description" required>
+                  </textarea>
+              </mat-form-field>  
+            </div>
+            <div>  
+              <button mat-raised-button color="primary" style="margin-right:6px;" [routerLink]="['/home']" routerLinkActive="router-link-active" >Zurück</button>  
+              <button mat-raised-button color="primary" matStepperNext [disabled]="!basicdataForm.valid">Weiter</button>  
+            </div>   
+          </div>  
+          <!-- <button mat-raised-button color="primary" matStepperNext>Next</button> -->  
+        </form>  
+     </mat-card-content>
+    </mat-card>
   </mat-step>  
   <mat-step label="Koordinaten">  
-    <form [formGroup]="coordinates">  
-      <ng-template matStepLabel></ng-template>  
-      <div>  
-        <div>  
-          <mat-form-field>  
-            <input matInput placeholder="Latitude" formControlName="latitude">  
-          </mat-form-field>  
-        </div>  
-        <div>  
-          <mat-form-field>  
-            <input matInput placeholder="Longitude" formControlName="longitude">  
-          </mat-form-field>  
-        </div>   
-        <div>  
-          <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
-          <button mat-raised-button color="primary" matStepperNext>Weiter</button>  
-        </div>   
-      </div>  
-    </form>  
+    <mat-card id="card" style="text-align: center;">
+      <mat-card-title>
+          Koordinaten
+        <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="coordinates" #coordinateForm="ngForm">  
+          <ng-template matStepLabel></ng-template>  
+          <div>  
+            <div>  
+              <mat-form-field>  
+                <input matInput placeholder="Latitude" formControlName="latitude" required>  
+              </mat-form-field>  
+            </div>  
+            <div>  
+              <mat-form-field>  
+                <input matInput placeholder="Longitude" formControlName="longitude" required>  
+              </mat-form-field>  
+            </div>   
+            <div>  
+              <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
+              <button mat-raised-button color="primary" matStepperNext [disabled]="!coordinateForm.valid">Weiter</button>  
+            </div>   
+          </div>  
+        </form>  
+      </mat-card-content>
+    </mat-card>
   </mat-step>
   <mat-step>
-    <mat-form-field>
-      <mat-label>Kategorie</mat-label>
-      <mat-select style="width: 100px;"  name="category" [(ngModel)]="selectedCategory" (ngModelChange)="getSubCategories()">
-        <mat-option *ngFor="let category of categories" [value]="category">
-          {{category.categoryName}}
-        </mat-option>
-      </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Unterkategorien</mat-label>
-        <mat-select style="width: 100px;"  name="subcategory"[formControl]="selectedSubCategories" multiple>
-          <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
-            {{subCategory.subCategoryName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-card id="card" style="text-align: center;">
+      <mat-card-title>
+          Kategorie
+        <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+        <form  #categoryForm="ngForm">  
+        <mat-form-field>
+          <mat-label>Kategorie</mat-label>
+          <mat-select style="width: 100%;"  name="category" [(ngModel)]="selectedCategory" (ngModelChange)="getSubCategories()" required>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{category.categoryName}}
+            </mat-option>
+          </mat-select>
+          </mat-form-field> <br>
+          <mat-form-field>
+            <mat-label>Unterkategorien</mat-label>
+            <mat-select style="width: 100%;"  name="subcategory"[formControl]="selectedSubCategories" multiple>
+              <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
+                {{subCategory.subCategoryName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>  
+            <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
+            <button mat-raised-button color="primary" matStepperNext [disabled]="!categoryForm.valid">Weiter</button>  
+          </div>   
+        </form>
+      </mat-card-content>
+    </mat-card>
   </mat-step>
-  <mat-step label="Übersicht">
-    <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Previous</button>  
-    <button mat-raised-button color="primary" (click)="saveLocation()">Save</button>  
+  <mat-step>
+    <mat-card id="card" style="text-align: center;">
+      <mat-card-title>
+          Übersicht
+        <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+        <h3 mat-subheader style="text-align: center;">Allgemeine Informationen:</h3> 
+        Bezeichnung: {{this.basicdata.value.name}} <br>
+        Addresse: {{this.basicdata.value.adress}} <br>
+        Beschreibung: {{this.basicdata.value.description}} <br>
+        <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" style="margin-right:6px;" matStepperPrevious>Zurück</button>  
+          <button mat-raised-button color="primary" (click)="saveLocation()" [disabled]="!categoryForm.valid">Speichern</button>  
+        </mat-card-actions>
+      </mat-card>
   </mat-step>  
 </mat-horizontal-stepper>  

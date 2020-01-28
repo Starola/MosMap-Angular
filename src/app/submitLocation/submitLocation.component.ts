@@ -94,8 +94,10 @@ export class SubmitLocationComponent implements OnInit {
   }
 
   getSubcategoryIds(){
-    this.subCategories.forEach(element => {
-      this.locationForCreation.SubCategoryIds.push(element.id);
-    });
+    if(this.subCategories){
+      this.subCategories.forEach(element => {
+        this.locationForCreation.SubCategoryIds.push(element.id);
+      });
+    }
   }
 }
