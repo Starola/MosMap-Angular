@@ -1,8 +1,5 @@
 <div *ngFor="let categoryId of this.categoryService.curentlySelectedCategories">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{categoryId}}</mat-card-title>
-    </mat-card-header>
     <app-locationCategoryList [categoryId]="categoryId"></app-locationCategoryList>
   </mat-card>
 </div>
