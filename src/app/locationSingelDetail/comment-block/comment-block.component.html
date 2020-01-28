@@ -10,7 +10,8 @@
 </form>
 </div>
 <div class="list">
-  <div *ngFor="let comment of commentList">
+  <div *ngFor="let comment of commentList | paginate: { itemsPerPage: 5, currentPage: p}">
     <app-commentSingel class="listItem" [comment]="comment"></app-commentSingel>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
