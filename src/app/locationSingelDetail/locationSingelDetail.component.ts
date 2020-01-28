@@ -19,9 +19,11 @@ export class LocationSingelDetailComponent implements OnInit {
   private name: string;
   private description: string;
   private address: string;
+  locationId: number;
 
   ngOnInit() {
     let locationId = this.activatedRoute.snapshot.params['id']
+    this.locationId = locationId;
     this.getData(locationId);
   }
 

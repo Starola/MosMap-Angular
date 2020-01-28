@@ -7,3 +7,7 @@ td {
 th{
   text-align: left;
 }
+
+.comments {
+  background-color: grey;
+}

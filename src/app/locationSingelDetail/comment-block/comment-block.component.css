@@ -1,0 +1,11 @@
+.listItem {
+    width: 90%;
+    height: 100%;
+    margin: 5px;
+    padding: 0px;
+}
+
+.list {
+    width: 100%;
+    height: auto;
+}

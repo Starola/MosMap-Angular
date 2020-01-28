@@ -1,0 +1,16 @@
+<h3 mat-subheader>Kommentare</h3>
+
+<button  mat-button (click)="setCommenCreation()" *ngIf="loggedIn()"> Kommentar schreiben</button>
+<div *ngIf="commentCreationActive">
+  <form #commentForm="ngForm" (ngSubmit)="createComment()">
+    <mat-form-field>
+        <textarea matInput  placeholder="Kommentar" name="commentText" required [(ngModel)]="comentForCreation.commentText"></textarea>
+    </mat-form-field><br/>
+    <button [disabled]="!commentForm.valid" mat-button type="submit" color="primary">Abschicken</button>
+</form>
+</div>
+<div class="list">
+  <div *ngFor="let comment of commentList">
+    <app-commentSingel class="listItem" [comment]="comment"></app-commentSingel>
+  </div>
+</div>
