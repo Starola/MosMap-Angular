@@ -5,6 +5,8 @@ import {GeoJSONprocessingService} from '../_services/geo-jsonprocessing.service'
 import {ActivatedRoute} from '@angular/router';
 import { LocationDetail } from '../_models/locationDetail';
 import { AuthService } from '../_services/auth.service';
+import { Photo } from '../_models/Photo';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @Component({
   selector: 'app-locationSingelDetail',
@@ -13,8 +15,11 @@ import { AuthService } from '../_services/auth.service';
 })
 export class LocationSingelDetailComponent implements OnInit {
   @ViewChild(MapComponent, {static: false}) mapComponent: MapComponent;
+  @ViewChild(GalleryComponent, {static: false}) galleryComponent: GalleryComponent;
 
   location: LocationDetail;
+
+  newPhoto: Photo;
 
   constructor(
     private locationService: LocationService,

@@ -2,3 +2,11 @@
     background-color: gray;
     margin-bottom: 10px;
 }
+
+.nv-file-over {
+    border: dotted 2px red;
+}
+
+input[type=file] {
+    color: transparent;
+}

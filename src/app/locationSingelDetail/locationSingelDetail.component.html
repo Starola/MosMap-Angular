@@ -22,7 +22,7 @@
   <mat-card class="gallery" color="primary" id="card" style="text-align: center;">
     <app-gallery *ngIf="location" [location]="location"></app-gallery>
   </mat-card>
-  <app-photoUpload *ngIf="loggedIn()"[locationId]="locationId" class="uploader"></app-photoUpload>
+  <app-photoUpload *ngIf="loggedIn()" [locationId]="locationId"  class="uploader"></app-photoUpload>
   <mat-card class="comments" color="primary">
     <app-comment-block [locationId]="locationId"></app-comment-block>
   </mat-card>

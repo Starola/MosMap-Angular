@@ -19,18 +19,20 @@ export class GalleryComponent implements OnInit {
     this.galleryOptions = [
       {
         fullWidth: false,
-        width: '1000px',
-        height: '700px',
-        thumbnailsColumns: 4,
+        width: '800px',
+        height: '600px',
+        thumbnailsColumns: 5,
         imageAnimation: NgxGalleryAnimation.Slide,
         preview: true,
         previewCloseOnClick: true,
         previewCloseOnEsc: true,
+        previewInfinityMove: true,
+        previewZoom: true,
         imageArrows: true,
         imageSwipe: true,
         imageInfinityMove: true,
         thumbnailsArrowsAutoHide: true,
-
+        thumbnailsMoveSize: 3
 
       },
       {
@@ -44,17 +46,32 @@ export class GalleryComponent implements OnInit {
       {
         breakpoint: 800,
         width: '100%',
-        height: '300px',
+        height: '400px',
+        thumbnailsColumns: 4,
+        thumbnailsMoveSize: 2
+      },
+      {
+        breakpoint: 600,
+        width: '100%',
+        height: '350px',
         thumbnailsColumns: 3,
+        thumbnailsMoveSize: 2
       },
       // max-width 400
       {
        breakpoint: 400,
         width: '100%',
-        height: '200px',
-        fullWidth: true,
-        thumbnails: false,
-      }
+        height: '250px',
+        thumbnails: true,
+        thumbnailsColumns: 2,
+        thumbnailsMoveSize: 2
+      },
+      {
+        breakpoint: 300,
+         width: '100%',
+         height: '150px',
+         thumbnails: false
+       }
                 
 
     ];
