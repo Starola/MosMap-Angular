@@ -1,0 +1,23 @@
+<mat-card id="card" style="text-align: center;">
+  <mat-card-title>
+      Ort löschen
+      <mat-divider></mat-divider>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Kategorie</mat-label>
+      <mat-select style="width: 100%;" label="Kategorien" name="category" [(ngModel)]="selectedCategory" (ngModelChange)="getAllLocations()" required>
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.categoryName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+      <div *ngFor="let location of locations">
+        <mat-card class="content">
+          Ort-Id: {{location.id}} <br>
+          Ort: {{location.locationName}} <br>
+          <button mat-button color="warn" (click)="deleteLocation(location.id)">Location löschen</button>
+        </mat-card>
+      </div>
+  </mat-card-content>
+</mat-card>

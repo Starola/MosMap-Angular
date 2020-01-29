@@ -28,4 +28,8 @@ export class LocationService {
   createLocation(location: LocationForCreation) {
     return this.http.post(this.baseUrl, location);
   }
+
+  deleteLocation(locationId: number) {
+    return this.http.delete(this.baseUrl + locationId);
+  }
 }
