@@ -21,4 +21,12 @@ export class SubCategoryService {
   getSubCategorieById(id): Observable<SubCategory> {
     return this.http.get<SubCategory>(this.baseUrl  + id);
   }
+
+  createNewSubCategory() {
+    return this.http.post(this.baseUrl, []);
+  }
+
+  deleteSubCategoryById(id: number) {
+    return this.http.delete(this.baseUrl + id);
+  }
 }

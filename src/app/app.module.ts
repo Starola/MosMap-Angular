@@ -47,6 +47,8 @@ import { CommentSingelComponent } from './locationSingelDetail/comment-block/com
 import { GalleryComponent } from './locationSingelDetail/gallery/gallery.component';
 import { PhotoUploadComponent } from './locationSingelDetail/photoUpload/photoUpload.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { AddSubCategoryComponent } from './administrator/addSubCategory/addSubCategory.component';
+import { DeleteSubCategoryComponent } from './administrator/deleteSubCategory/deleteSubCategory.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -88,7 +90,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
     CommentBlockComponent,
     CommentSingelComponent,
     GalleryComponent,
-    PhotoUploadComponent
+    PhotoUploadComponent,
+    AddSubCategoryComponent,
+    DeleteSubCategoryComponent
   ],
   imports: [
     BrowserModule,
