@@ -11,7 +11,6 @@ export class LocationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.location);
   }
 
 }
