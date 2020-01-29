@@ -4,6 +4,7 @@ import {LocationService} from '../_services/location.service';
 import {GeoJSONprocessingService} from '../_services/geo-jsonprocessing.service'
 import {ActivatedRoute} from '@angular/router';
 import { LocationDetail } from '../_models/locationDetail';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-locationSingelDetail',
@@ -15,8 +16,12 @@ export class LocationSingelDetailComponent implements OnInit {
 
   location: LocationDetail;
 
-  constructor(private locationService: LocationService, private geoJsonProcessingService: GeoJSONprocessingService, private activatedRoute: ActivatedRoute) {
-  }
+  constructor(
+    private locationService: LocationService,
+    private geoJsonProcessingService: GeoJSONprocessingService, 
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
+    ) {}
 
   private name: string;
   private description: string;
@@ -37,6 +42,10 @@ export class LocationSingelDetailComponent implements OnInit {
       this.address = res.address;
       this.mapComponent.addSingleGeoJSON(locationId)
     });
+  }
+
+  loggedIn(){
+    return this.authService.loggedIn();
   }
 
 }

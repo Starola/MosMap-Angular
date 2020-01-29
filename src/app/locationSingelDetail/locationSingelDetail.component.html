@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-grid-list cols=3 rowHeight="400px" (window:resize)="onResize($event)">
+  <mat-grid-list cols=3 rowHeight="400px" >
     <mat-grid-tile id="map" colspan="3">
       <app-map></app-map>
     </mat-grid-tile>
@@ -20,8 +20,9 @@
       </mat-grid-tile>
   </mat-grid-list>
   <mat-card class="gallery" color="primary" id="card" style="text-align: center;">
-    <app-gallery [location]="location"></app-gallery>
+    <app-gallery *ngIf="location" [location]="location"></app-gallery>
   </mat-card>
+  <app-photoUpload *ngIf="loggedIn()"[locationId]="locationId" class="uploader"></app-photoUpload>
   <mat-card class="comments" color="primary">
     <app-comment-block [locationId]="locationId"></app-comment-block>
   </mat-card>

@@ -45,6 +45,8 @@ import { SubmitLocationComponent } from './submitLocation/submitLocation.compone
 import { CommentBlockComponent } from './locationSingelDetail/comment-block/comment-block.component';
 import { CommentSingelComponent } from './locationSingelDetail/comment-block/commentSingel/commentSingel.component';
 import { GalleryComponent } from './locationSingelDetail/gallery/gallery.component';
+import { PhotoUploadComponent } from './locationSingelDetail/photoUpload/photoUpload.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -85,7 +87,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     SubmitLocationComponent,
     CommentBlockComponent,
     CommentSingelComponent,
-    GalleryComponent
+    GalleryComponent,
+    PhotoUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     FlexLayoutModule,
     NgxPaginationModule,
     NgxGalleryModule,
+    FileUploadModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

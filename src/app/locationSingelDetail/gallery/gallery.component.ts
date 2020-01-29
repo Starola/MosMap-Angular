@@ -23,6 +23,14 @@ export class GalleryComponent implements OnInit {
         height: '700px',
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
+        preview: true,
+        previewCloseOnClick: true,
+        previewCloseOnEsc: true,
+        imageArrows: true,
+        imageSwipe: true,
+        imageInfinityMove: true,
+        thumbnailsArrowsAutoHide: true,
+
 
       },
       {
