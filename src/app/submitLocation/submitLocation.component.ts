@@ -56,7 +56,6 @@ export class SubmitLocationComponent implements OnInit {
   getCategories(){
     this.categoryService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
-      console.log(this.categories);
     }, error => {
       console.log(error);
     });
@@ -66,7 +65,7 @@ export class SubmitLocationComponent implements OnInit {
     this.subCategoryService.getSubCategories(this.selectedCategory.id).subscribe((subCategories: SubCategory[]) => {
       this.subCategories = subCategories;
     }, error => {
-      console.log(error);
+      this.subCategories = [];
     });
   }
 

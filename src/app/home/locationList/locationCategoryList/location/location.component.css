@@ -1,3 +1,13 @@
 .content{
   cursor: pointer;
 }
+
+.content {
+  width: 150px;
+  height: 270px;
+  background-color: gray;
+}
+
+.mainImage {
+  height: 180px;
+}
