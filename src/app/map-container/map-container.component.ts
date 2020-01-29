@@ -55,6 +55,5 @@ export class MapContainerComponent implements OnInit {
   }
 
   testButton(){
-    this.mapComponent.removeSingleGeoJSON(1);
   }
 }
