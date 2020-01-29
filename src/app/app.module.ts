@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxGalleryModule} from 'ngx-gallery';
 
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -43,9 +44,17 @@ import { DeleteCategoryComponent } from './administrator/deleteCategory/deleteCa
 import { SubmitLocationComponent } from './submitLocation/submitLocation.component';
 import { CommentBlockComponent } from './locationSingelDetail/comment-block/comment-block.component';
 import { CommentSingelComponent } from './locationSingelDetail/comment-block/commentSingel/commentSingel.component';
+import { GalleryComponent } from './locationSingelDetail/gallery/gallery.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
+}
+
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides= {
+    pinch: {enable: false},
+    rotate: {enable: false}
+  }
 }
 
 @NgModule({
@@ -75,7 +84,8 @@ export function tokenGetter() {
     LocationToCheckSingleComponent,
     SubmitLocationComponent,
     CommentBlockComponent,
-    CommentSingelComponent
+    CommentSingelComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +97,7 @@ export function tokenGetter() {
     MaterialModule,
     FlexLayoutModule,
     NgxPaginationModule,
+    NgxGalleryModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -101,7 +112,8 @@ export function tokenGetter() {
     PopUpService,
     ShapeService,
     ErrorInterceptorProvider,
-    AuthInterceptorProvider
+    AuthInterceptorProvider,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
   ],
   bootstrap: [AppComponent]
 })

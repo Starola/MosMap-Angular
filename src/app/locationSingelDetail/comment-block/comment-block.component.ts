@@ -36,10 +36,8 @@ export class CommentBlockComponent implements OnInit {
 
 
   getComments() {
-    console.log(this.locationId);
     this.commentServive.getCommentsByLocationId(this.locationId).subscribe((comments: Comment[]) => {
       this.commentList = comments;
-      console.log(comments);
     }, error => {
       console.log(error);
     });

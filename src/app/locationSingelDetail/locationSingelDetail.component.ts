@@ -3,6 +3,7 @@ import {MapComponent} from '../map-container/map/map.component';
 import {LocationService} from '../_services/location.service';
 import {GeoJSONprocessingService} from '../_services/geo-jsonprocessing.service'
 import {ActivatedRoute} from '@angular/router';
+import { LocationDetail } from '../_models/locationDetail';
 
 @Component({
   selector: 'app-locationSingelDetail',
@@ -12,6 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 export class LocationSingelDetailComponent implements OnInit {
   @ViewChild(MapComponent, {static: false}) mapComponent: MapComponent;
 
+  location: LocationDetail;
 
   constructor(private locationService: LocationService, private geoJsonProcessingService: GeoJSONprocessingService, private activatedRoute: ActivatedRoute) {
   }
@@ -29,10 +31,10 @@ export class LocationSingelDetailComponent implements OnInit {
 
   getData(locationId: number) {
     this.locationService.getLocationById(locationId).subscribe((res: any) => {
+      this.location = res;
       this.name = res.locationName;
       this.description = res.locationDescription;
       this.address = res.address;
-
       this.mapComponent.addSingleGeoJSON(locationId)
     });
   }

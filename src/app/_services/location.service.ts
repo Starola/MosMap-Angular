@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocationForCreation } from '../_models/locationForCreation';
+import { LocationDetail } from '../_models/locationDetail';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class LocationService {
     return this.http.get<Location[]>(this.baseUrl + "categoryid/" + categoryId);
   }
 
-  getLocationById(id): Observable<Location> {
-    return this.http.get<Location>(this.baseUrl  + id);
+  getLocationById(id): Observable<LocationDetail> {
+    return this.http.get<LocationDetail>(this.baseUrl  + id);
   }
 
   getGeoJSON(categoryId: number): Observable<any[]> {

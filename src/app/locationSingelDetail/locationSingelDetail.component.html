@@ -19,6 +19,9 @@
         </table>
       </mat-grid-tile>
   </mat-grid-list>
+  <mat-card class="gallery" color="primary" id="card" style="text-align: center;">
+    <app-gallery [location]="location"></app-gallery>
+  </mat-card>
   <mat-card class="comments" color="primary">
     <app-comment-block [locationId]="locationId"></app-comment-block>
   </mat-card>
