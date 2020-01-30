@@ -16,9 +16,11 @@
           Foto Dropzone
       </div>
 
-      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <input type="file" ng2FileSelect [uploader]="uploader" style="display: none"  #fileUploader>
 
-
+        <button mat-flat-button (click)="fileUploader.click()" color="primary">
+            Durchsuchen
+        </button>
   <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
 
       <h3 mat-subheader>Warteschlange</h3>
