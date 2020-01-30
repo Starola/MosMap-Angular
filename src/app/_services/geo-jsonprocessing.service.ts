@@ -29,7 +29,7 @@ export class GeoJSONprocessingService {
     iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-  })
+  });
 
   addGeoJSON(categoryId: number, map: L.map) {
     this.locationService.getGeoJSON(categoryId).subscribe((res: any) => {
@@ -40,10 +40,10 @@ export class GeoJSONprocessingService {
         //let marker = L.marker([lon, lat]);
         //marker.addTo(this.group);
 
-        let popup = L.popup({autoClose: false, closeOnClick: false, closeButton: false})
+        L.popup({autoClose: false, closeOnClick: false, closeButton: false})
           .setLatLng([lon, lat])
           .setContent(c.properties.name)
-          .addTo(this.group)
+          .addTo(this.group);
 
         this.group.eachLayer(function (layer) {
           if (layer.layerCategoryID == null) {
@@ -70,14 +70,17 @@ export class GeoJSONprocessingService {
     this.locationService.getLocationById(locationId).subscribe((res: any) => {
       this.group.addTo(map);
 
-      const lat = res.latitude
-      const lon = res.longitude
+      const lat = res.latitude;
+      const lon = res.longitude;
 
-      let marker = L.marker([lat, lon]).addTo(this.group)
+      L.popup({autoClose: false, closeOnClick: false, closeButton: false})
+        .setLatLng([lat, lon])
+        .setContent(res.locationName)
+        .addTo(this.group);
 
       this.group.eachLayer(function (layer) {
         if (layer.layerCategoryID == null) {
-          layer.layerCategoryID = res.categoryId
+          layer.layerCategoryID = res.categoryId;
           if (layer.locationID == null) {
             layer.locationID = locationId;
           }
@@ -86,8 +89,20 @@ export class GeoJSONprocessingService {
     })
   }
 
+  addGeoJSONSingleOnDetailComponent(locationId: number, map: L.map) {
+    this.locationService.getLocationById(locationId).subscribe((res: any) => {
+      const lat = res.latitude;
+      const lon = res.longitude;
+
+      L.popup({autoClose: false, closeOnClick: false, closeButton: false})
+        .setLatLng([lat, lon])
+        .setContent(res.locationName)
+        .addTo(map)
+    })
+  }
+
   removeGeoJSONSingle(locationId: number, map: L.map) {
-    this.group.eachLayer(function (layer){
+    this.group.eachLayer(function (layer) {
       if (layer.layerLocationID === locationId) {
         map.removeLayer(layer)
       }

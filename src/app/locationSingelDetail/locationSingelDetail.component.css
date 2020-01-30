@@ -15,3 +15,10 @@ th{
 .uploader {
   padding-bottom: 10px;
 }
+
+#map {
+  position: relative;
+  border: 1px solid black;
+  height: 95%; /* or as desired */
+  width: 100%; /* This means "100% of the width of its container", the .col-md-8 */
+}

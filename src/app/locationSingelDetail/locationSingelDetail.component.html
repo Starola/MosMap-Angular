@@ -1,23 +1,26 @@
 <mat-card>
-  <mat-grid-list cols=3 rowHeight="400px" >
+  <mat-grid-list cols="3" rowHeight="400px" (window:resize)="onResize($event)">
     <mat-grid-tile id="map" colspan="3">
-      <app-map></app-map>
+      <div class="map-container">
+        <div class="map-frame">
+          <div id="map"></div>
+        </div>
+      </div>
     </mat-grid-tile>
-
-      <mat-grid-tile colspan="3">
-        <table style="width: 100%; height: 100%">
-          <tr style="height: 10%">
-            <th>Name</th>
-            <th>Beschreibung</th>
-            <th>Adresse</th>
-          </tr>
-          <tr>
-            <td>{{this.name}}</td>
-            <td>{{this.description}}</td>
-            <td>{{this.address}}</td>
-          </tr>
-        </table>
-      </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <table style="width: 100%; height: 100%">
+        <tr style="height: 10%">
+          <th>Name</th>
+          <th>Beschreibung</th>
+          <th>Adresse</th>
+        </tr>
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.address}}</td>
+        </tr>
+      </table>
+    </mat-grid-tile>
   </mat-grid-list>
   <mat-card class="gallery" color="primary" id="card" style="text-align: center;">
     <app-gallery *ngIf="location" [location]="location"></app-gallery>
