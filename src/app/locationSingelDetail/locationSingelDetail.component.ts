@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, ViewChild, AfterViewInit, OnInit} from '@angular/core';
 import {MapComponent} from '../map-container/map/map.component';
 import {LocationService} from '../_services/location.service';
 import {GeoJSONprocessingService} from '../_services/geo-jsonprocessing.service'
@@ -15,7 +15,7 @@ import { GalleryComponent } from './gallery/gallery.component';
   templateUrl: './locationSingelDetail.component.html',
   styleUrls: ['./locationSingelDetail.component.css']
 })
-export class LocationSingelDetailComponent implements AfterViewInit{
+export class LocationSingelDetailComponent implements AfterViewInit, OnInit{
   @ViewChild(MapComponent, {static: false}) mapComponent: MapComponent;
   @ViewChild(GalleryComponent, {static: false}) galleryComponent: GalleryComponent;
 
@@ -36,11 +36,14 @@ export class LocationSingelDetailComponent implements AfterViewInit{
   private address: string;
   locationId: number;
 
-  ngAfterViewInit() {
-    this.initMap();
+  ngOnInit(){
     let locationId = this.activatedRoute.snapshot.params['id']
     this.locationId = locationId;
     this.getData(locationId);
+  }
+
+  ngAfterViewInit() {
+    this.initMap();
   }
 
   getData(locationId: number) {

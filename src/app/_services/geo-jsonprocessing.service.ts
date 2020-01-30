@@ -91,8 +91,6 @@ export class GeoJSONprocessingService {
 
   addGeoJSONSingleOnDetailComponent(locationId: number, map: L.map) {
     this.locationService.getLocationById(locationId).subscribe((res: any) => {
-      this.group.addTo(map);
-
       const lat = res.latitude;
       const lon = res.longitude;
 
