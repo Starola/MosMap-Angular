@@ -1,8 +1,10 @@
 <mat-card routerLink="/locationSingelDetail/{{location.id}}" class="content">
   <mat-card-header>
-    <mat-card-title>{{location.locationName}}</mat-card-title>
+    <mat-card-title>{{(location.locationName.length>10)? (location.locationName | slice:0:10)+'..':(location.locationName) }}</mat-card-title>
   </mat-card-header>
+  <mat-divider></mat-divider>
+  <img mat-card-image src="{{location.photoUrl}}" class="mainImage" onerror="this.onerror=null; this.src='assets/NO_IMG_600x600.png'">
   <mat-card-content>
-  {{location.id}} Test  {{location.locationDescription}}
+  {{(location.locationDescription.length>40)? (location.locationDescription | slice:0:40)+'..':(location.locationDescription) }}
   </mat-card-content>
 </mat-card>

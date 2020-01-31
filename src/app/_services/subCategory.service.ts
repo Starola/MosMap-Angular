@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../_models/category';
 import { SubCategory } from '../_models/subCategory';
+import { SubcategoryForCreation } from '../_models/subcategoryForCreation';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,13 @@ export class SubCategoryService {
 
   getSubCategorieById(id): Observable<SubCategory> {
     return this.http.get<SubCategory>(this.baseUrl  + id);
+  }
+
+  createNewSubCategory(subCategory: SubcategoryForCreation) {
+    return this.http.post(this.baseUrl, subCategory);
+  }
+
+  deleteSubCategoryById(id: number) {
+    return this.http.delete(this.baseUrl + id);
   }
 }

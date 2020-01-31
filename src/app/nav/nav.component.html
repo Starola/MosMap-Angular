@@ -8,7 +8,7 @@
       <button *ngIf="!loggedIn()" mat-button  routerLink="/login"><mat-icon>account_circle</mat-icon> Login</button>
       <button *ngIf="!loggedIn()" mat-button  routerLink="/register"><mat-icon>person_add</mat-icon> Registrieren</button>
       <button *ngIf="isAdmin()" mat-button routerLink="/admin"><mat-icon>dashboard</mat-icon> Admin Übersicht</button>
-      <button *ngIf="loggedIn()" mat-button routerLink="/submitLocation"><mat-icon>description</mat-icon> Location hinzufügen</button>
+      <button *ngIf="loggedIn()" mat-button routerLink="/submitLocation"><mat-icon>description</mat-icon> Ort hinzufügen</button>
       <button *ngIf="loggedIn()" mat-button  (click)="logOut()"><mat-icon>close</mat-icon> Logout</button>
     </div>
     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -19,7 +19,7 @@
     <button *ngIf="!loggedIn()" mat-menu-item   routerLink="/login"><mat-icon>account_circle</mat-icon> Login</button>
     <button *ngIf="!loggedIn()" mat-menu-item   routerLink="/register"><mat-icon>person_add</mat-icon> Registrieren</button>
     <button *ngIf="isAdmin()" mat-menu-item  routerLink="/admin"><mat-icon>dashboard</mat-icon> Admin Übersicht</button>
-    <button *ngIf="loggedIn()" mat-menu-item  routerLink="/submitLocation"><mat-icon>description</mat-icon> Location hinzufügen</button>
+    <button *ngIf="loggedIn()" mat-menu-item  routerLink="/submitLocation"><mat-icon>description</mat-icon> Ort hinzufügen</button>
     <button *ngIf="loggedIn()" mat-menu-item   (click)="logOut()"><mat-icon>close</mat-icon> Logout</button>
 </mat-menu>
 

@@ -13,8 +13,8 @@ export class LocationService {
 
   constructor(private http: HttpClient) { }
 
-  getLocations(categoryId: number): Observable<Location[]> {
-    return this.http.get<Location[]>(this.baseUrl + "categoryid/" + categoryId);
+  getLocations(categoryId: number): Observable<LocationDetail[]> {
+    return this.http.get<LocationDetail[]>(this.baseUrl + "categoryid/" + categoryId);
   }
 
   getLocationById(id): Observable<LocationDetail> {
@@ -27,5 +27,9 @@ export class LocationService {
 
   createLocation(location: LocationForCreation) {
     return this.http.post(this.baseUrl, location);
+  }
+
+  deleteLocation(locationId: number) {
+    return this.http.delete(this.baseUrl + locationId);
   }
 }

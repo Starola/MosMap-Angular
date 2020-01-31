@@ -31,6 +31,14 @@ export class MapContainerComponent implements OnInit {
     this.selectedCategories = this.categoryService.curentlySelectedCategories;
   }
 
+  ngAfterViewInit(){
+    this.selectedCategories.forEach(element => {
+      if(this.mapComponent){
+        this.mapComponent.addGeoJSON(element);
+      }
+    });
+  }
+
   onResize(event) {
     this.breakpoint = (event.target.innerWidth <= 500) ? 3 : 4;
   }
@@ -55,6 +63,5 @@ export class MapContainerComponent implements OnInit {
   }
 
   testButton(){
-    this.mapComponent.removeSingleGeoJSON(1);
   }
 }

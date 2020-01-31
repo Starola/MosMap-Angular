@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LocationService } from 'src/app/_services/location.service';
 import { CategoryService } from 'src/app/_services/category.service';
 import { Category } from 'src/app/_models/category';
+import { LocationDetail } from 'src/app/_models/locationDetail';
 
 @Component({
   selector: 'app-locationCategoryList',
@@ -11,7 +12,7 @@ import { Category } from 'src/app/_models/category';
 export class LocationCategoryListComponent implements OnInit {
   @Input() categoryId: number;
 
-  locationList: Location[];
+  locationList: LocationDetail[];
   categoryName: string;
 
   constructor(
@@ -25,7 +26,7 @@ export class LocationCategoryListComponent implements OnInit {
   }
 
   getLocations() {
-    this.locationService.getLocations(this.categoryId).subscribe((locations: Location[]) => {
+    this.locationService.getLocations(this.categoryId).subscribe((locations: LocationDetail[]) => {
       this.locationList = locations;
     }, error => {
       console.log(error);

@@ -1,7 +1,7 @@
 import { Photo } from './Photo';
 
 export interface LocationDetail {
-    Id: number;
+    id: number;
     LocationName: string;
     LocationDescription: string;
     Address: string;

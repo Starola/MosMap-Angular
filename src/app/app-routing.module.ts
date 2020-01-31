@@ -10,6 +10,9 @@ import { DeleteCategoryComponent } from './administrator/deleteCategory/deleteCa
 import { SubmitLocationComponent } from './submitLocation/submitLocation.component';
 
 import { LocationSingelDetailComponent } from './locationSingelDetail/locationSingelDetail.component'
+import { AddSubCategoryComponent } from './administrator/addSubCategory/addSubCategory.component';
+import { DeleteSubCategoryComponent } from './administrator/deleteSubCategory/deleteSubCategory.component';
+import { DeleteLocationComponent } from './administrator/deleteLocation/deleteLocation.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -19,6 +22,9 @@ const routes: Routes = [
   {path: 'admin/checkLocations', component: CheckLocationsComponent},
   {path: 'admin/addCategory', component: AddCategoryComponent},
   {path: 'admin/deleteCategory', component: DeleteCategoryComponent},
+  {path: 'admin/addSubCategory', component: AddSubCategoryComponent},
+  {path: 'admin/deleteSubCategory', component: DeleteSubCategoryComponent},
+  {path: 'admin/deleteLocation', component: DeleteLocationComponent},
   {path: 'submitLocation', component: SubmitLocationComponent}, 
   {path: 'locationSingelDetail/:id', component: LocationSingelDetailComponent},
 

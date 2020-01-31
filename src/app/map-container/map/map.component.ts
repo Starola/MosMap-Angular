@@ -41,50 +41,8 @@ export class MapComponent implements AfterViewInit {
     this.initMap();
   }
 
-  private initShapeLayer() {
-    const stateLayer = L.geoJSON(this.states, {
-      style: (feature) => ({
-        weight: 3,
-        opacity: 0.5,
-        color: '#008f68',
-        fillOpacity: 0.8,
-        fillColor: '#6DB65B'
-      }),
-      onEachFeature: (feature, layer) => (
-        layer.on({
-          mouseover: (e) => (this.highlightFeature(e)),
-          mouseout: (e) => (this.resetFeature(e)),
-        })
-      )
-    });
-    this.map.addLayer(stateLayer);
-    stateLayer.bringToBack();
-  }
-
-  private highlightFeature(e) {
-    const layer = e.target;
-    layer.setStyle({
-      weight: 10,
-      opacity: 1.0,
-      color: '#DFA612',
-      fillOpacity: 1.0,
-      fillColor: '#FAE042',
-    });
-  }
-
-  private resetFeature(e) {
-    const layer = e.target;
-    layer.setStyle({
-      weight: 3,
-      opacity: 0.5,
-      color: '#008f68',
-      fillOpacity: 0.8,
-      fillColor: '#6DB65B'
-    });
-  }
-
   private initMap(): void {
-    let accessToken = 'pk.eyJ1IjoibWFqb3J0b21sIiwiYSI6ImNqc2E1bHlzZzFud3A0M3JuYTU1MnIxcHMifQ.RJQyiR5__e25Vd-HkhOfsg'
+    let accessToken = 'pk.eyJ1IjoibWFqb3J0b21sIiwiYSI6ImNqc2E1bHlzZzFud3A0M3JuYTU1MnIxcHMifQ.RJQyiR5__e25Vd-HkhOfsg';
     this.map = L.map('map', {
       center: [49.3481568, 9.1274993],
       zoom: 13.5
