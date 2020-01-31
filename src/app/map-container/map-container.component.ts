@@ -13,7 +13,7 @@ import {GeoSearchService} from '../_services/geo-search.service';
 export class MapContainerComponent implements OnInit {
   @ViewChild(SubcategoryContainerComponent, {static: false}) subcategoryContainer: SubcategoryContainerComponent;
   @ViewChild(MapComponent, {static: false}) mapComponent: MapComponent;
-  //@Output() curentlySelectedCategories: EventEmitter<number[]> = new EventEmitter<number[]>();
+  @Output() curentlySelectedCategories: EventEmitter<number[]> = new EventEmitter<number[]>();
 
 
   breakpoint: number;
@@ -46,24 +46,21 @@ export class MapContainerComponent implements OnInit {
   }
 
   selectCategory($event: number) {
-    console.log("Kategorie zu verändenr " + $event)
     this.changeCategoryList($event);
-    console.log(this.categoryService.curentlySelectedCategories);
-    //this.curentlySelectedCategories.emit(this.selectedCategories);
+    this.curentlySelectedCategories.emit(this.selectedCategories);
+    this.categoryService.curentlySelectedCategories = this.selectedCategories;
   }
 
   changeCategoryList(changedCategory: number){
     this.latestChangedCategory = changedCategory;
     if(this.selectedCategories.includes(changedCategory)){
       this.selectedCategories = this.selectedCategories.filter(item => item != changedCategory);
-      this.categoryService.curentlySelectedCategories = this.categoryService.curentlySelectedCategories.filter(item => item != changedCategory);
-      console.log("Löschen");
+      //this.categoryService.curentlySelectedCategories = this.categoryService.curentlySelectedCategories.filter(item => item != changedCategory);
       this.mapComponent.removeGeoJSON(changedCategory);
       return false;
     } else {
       this.selectedCategories.push(changedCategory);
-      this.categoryService.curentlySelectedCategories.push(changedCategory);
-      console.log("Addieren");
+      //this.categoryService.curentlySelectedCategories.push(changedCategory);
       this.mapComponent.addGeoJSON(changedCategory);
       return true;
     }

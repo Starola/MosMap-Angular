@@ -11,3 +11,7 @@
 .mainImage {
   height: 180px;
 }
+
+.title {
+  page-break-inside: avoid;
+}

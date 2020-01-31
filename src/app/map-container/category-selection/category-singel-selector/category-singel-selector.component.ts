@@ -31,7 +31,6 @@ export class CategorySingelSelectorComponent implements OnInit {
     } else{
       this.categorySelected = true;
     }
-    console.log(categoryId);
     this.selectedCategory.emit(categoryId);
   }
 }
