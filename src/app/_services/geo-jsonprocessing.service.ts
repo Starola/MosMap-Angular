@@ -43,7 +43,7 @@ export class GeoJSONprocessingService {
         let popup = L.popup({autoClose: false, closeOnClick: false, closeButton: false})
           .setLatLng([lon, lat])
           .setContent(c.properties.name)
-          .addTo(this.group)
+          .addTo(this.group);
 
         this.group.eachLayer(function (layer) {
           if (layer.layerCategoryID == null) {

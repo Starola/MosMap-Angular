@@ -29,6 +29,8 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements AfterViewInit {
   public map;
   private states;
+  private userLocated: boolean = false;
+  private userLocationMarkerGroup = L.layerGroup();
 
   constructor(private markerService: MarkerService,
               private shapeService: ShapeService,
@@ -100,16 +102,40 @@ export class MapComponent implements AfterViewInit {
     })
   }
 
-  private locateUser() {
+    private locateUser() {
+    let userLocationMarkerGroup = this.userLocationMarkerGroup;
     let map = this.map;
-    this.map.locate({setView: true, maxZoom: 15});
-    this.map.on('locationfound', onLocationFound);
 
     function onLocationFound(e) {
-      let radius = e.accuracy;
-      L.marker(e.latlng).addTo(map);
-      L.circle(e.latlng, radius, {color: "primary"}).addTo(map);
+      L.marker(e.latlng).addTo(userLocationMarkerGroup).bindPopup("Du bist hier").openPopup();
+      userLocationMarkerGroup.addTo(map);
     }
+
+    if (this.userLocated == false) {
+      this.map.locate({setView: true, maxZoom: 15});
+      this.map.on('locationfound', onLocationFound);
+      this.userLocated = true;
+    } else {
+      this.userLocationMarkerGroup.eachLayer(function (layer) {
+        userLocationMarkerGroup.removeLayer(layer);
+        layer = null;
+      });
+
+      this.userLocated = false;
+      this.map.stopLocate();
+    }
+  }
+
+  private centerMosbach(){
+    //this.map.setView([49.3481568, 9.1274993]).setZoom(13.5);
+    //this.map.panTo([49.3481568, 9.1274993]);
+
+    this.map.setView([49.3481568, 9.1274993], 13.5, {
+      "animate": true,
+      "pan": {
+      }
+    });
+
   }
 
   addGeoJSON(categoryID: number) {
