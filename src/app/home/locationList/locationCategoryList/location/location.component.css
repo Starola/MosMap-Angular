@@ -4,7 +4,7 @@
 
 .content {
   width: 150px;
-  height: 270px;
+  height: 275px;
   background-color: gray;
 }
 
@@ -14,4 +14,7 @@
 
 .title {
   page-break-inside: avoid;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
