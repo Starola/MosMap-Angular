@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import {MarkerService} from "../../_services/map-services/marker.service";
 import {ShapeService} from "../../_services/map-services/shape.service";
 import {GeoJSONprocessingService} from '../../_services/geo-jsonprocessing.service'
+import { Title } from '@angular/platform-browser';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -48,6 +49,7 @@ export class MapComponent implements AfterViewInit {
     });
     const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
       maxZoom: 19,
+      layerCategoryID: "Title",
       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 

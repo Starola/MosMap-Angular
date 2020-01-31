@@ -46,19 +46,24 @@ export class MapContainerComponent implements OnInit {
   }
 
   selectCategory($event: number) {
+    console.log("Kategorie zu verändenr " + $event)
     this.changeCategoryList($event);
-    this.categoryService.curentlySelectedCategories = this.selectedCategories;
+    console.log(this.categoryService.curentlySelectedCategories);
     //this.curentlySelectedCategories.emit(this.selectedCategories);
   }
 
   changeCategoryList(changedCategory: number){
     this.latestChangedCategory = changedCategory;
     if(this.selectedCategories.includes(changedCategory)){
-      this.selectedCategories = this.selectedCategories.filter(item => item !== changedCategory);
+      this.selectedCategories = this.selectedCategories.filter(item => item != changedCategory);
+      this.categoryService.curentlySelectedCategories = this.categoryService.curentlySelectedCategories.filter(item => item != changedCategory);
+      console.log("Löschen");
       this.mapComponent.removeGeoJSON(changedCategory);
       return false;
     } else {
       this.selectedCategories.push(changedCategory);
+      this.categoryService.curentlySelectedCategories.push(changedCategory);
+      console.log("Addieren");
       this.mapComponent.addGeoJSON(changedCategory);
       return true;
     }

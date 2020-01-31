@@ -19,7 +19,8 @@ export class GeoJSONprocessingService {
   ) {
   }
 
-  private group = L.layerGroup();
+  //private group = L.layerGroup();
+  //groupAdded = false;
 
   private markerIcon = L.icon({ //Test für Custom Markers, muss noch besprochen werden
     iconUrl: '../../../assets/pin.png',
@@ -32,8 +33,13 @@ export class GeoJSONprocessingService {
   });
 
   addGeoJSON(categoryId: number, map: L.map) {
+    map.eachLayer(function (layer) {
+      if (layer.layerCategoryID == null) {
+        layer.layerCategoryID = "Standart";
+        }
+    });
     this.locationService.getGeoJSON(categoryId).subscribe((res: any) => {
-      this.group.addTo(map);
+      
       for (const c of res) {
         const lat = c.geometry.coordinates[0];
         const lon = c.geometry.coordinates[1];
@@ -43,9 +49,9 @@ export class GeoJSONprocessingService {
         L.popup({autoClose: false, closeOnClick: false, closeButton: false})
           .setLatLng([lon, lat])
           .setContent(c.properties.name)
-          .addTo(this.group);
+          .addTo(map);
 
-        this.group.eachLayer(function (layer) {
+        map.eachLayer(function (layer) {
           if (layer.layerCategoryID == null) {
             layer.layerCategoryID = categoryId;
             if (layer.layerLocationID == null) {
@@ -55,20 +61,24 @@ export class GeoJSONprocessingService {
         })
       }
     })
+    /*if(this.groupAdded == false){
+      this.group.addTo(map);
+      this.groupAdded = true;
+    }*/
   }
 
 
   removeGeoJSONbyCategoryId(categoryId: number, map: L.map) {
-    this.group.eachLayer(function (layer) {
+    map.eachLayer(function (layer) {
       if (layer.layerCategoryID === categoryId) {
         map.removeLayer(layer)
       }
-    })
+    });
   }
 
   addGeoJSONSingle(locationId: number, map: L.map) {
     this.locationService.getLocationById(locationId).subscribe((res: any) => {
-      this.group.addTo(map);
+      map.addTo(map);
 
       const lat = res.latitude;
       const lon = res.longitude;
@@ -76,9 +86,9 @@ export class GeoJSONprocessingService {
       L.popup({autoClose: false, closeOnClick: false, closeButton: false})
         .setLatLng([lat, lon])
         .setContent(res.locationName)
-        .addTo(this.group);
+        .addTo(map);
 
-      this.group.eachLayer(function (layer) {
+      map.eachLayer(function (layer) {
         if (layer.layerCategoryID == null) {
           layer.layerCategoryID = res.categoryId;
           if (layer.locationID == null) {
@@ -102,7 +112,7 @@ export class GeoJSONprocessingService {
   }
 
   removeGeoJSONSingle(locationId: number, map: L.map) {
-    this.group.eachLayer(function (layer) {
+    map.eachLayer(function (layer) {
       if (layer.layerLocationID === locationId) {
         map.removeLayer(layer)
       }
