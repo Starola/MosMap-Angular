@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/cor
 import { SubcategoryContainerComponent } from './subcategory-container/subcategory-container.component';
 import { CategoryService } from '../_services/category.service';
 import { GeoJSONprocessingService } from '../_services/geo-jsonprocessing.service';
-import { MapComponent } from './map/map.component'
+import { MapComponent } from './map/map.component';
+import {GeoSearchService} from '../_services/geo-search.service';
 
 @Component({
   selector: 'app-map-container',
@@ -20,6 +21,7 @@ export class MapContainerComponent implements OnInit {
   latestChangedCategory: number;
 
   constructor(
+    private geoSearchService: GeoSearchService,
     private categoryService: CategoryService,
     private geoJSONProcessingService: GeoJSONprocessingService
   ) {
@@ -63,5 +65,6 @@ export class MapContainerComponent implements OnInit {
   }
 
   testButton(){
+    this.geoSearchService.geoSearch("Rathaus Mosbach");
   }
 }
