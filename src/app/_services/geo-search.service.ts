@@ -9,12 +9,14 @@ export class GeoSearchService {
   constructor() {
   }
 
-  geoSearch(query: string) {
+  async geoSearch(query: string) {
     const provider = new OpenStreetMapProvider();
-    const results = provider
-      .search({query: "Rathaus Mosbach"})
+    const results = await provider
+      .search({query: query})
       .then(function (result: any) {
         return result[0];
       });
+      console.log(results.x);
+      return results;
   }
 }

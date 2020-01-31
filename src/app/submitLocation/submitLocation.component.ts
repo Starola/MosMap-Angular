@@ -9,6 +9,7 @@ import { LocationForCreation } from '../_models/locationForCreation';
 import { LocationForCreationClass } from '../_models/locationForCreationClass';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { GeoSearchService } from '../_services/geo-search.service';
 
 @Component({
   selector: 'app-submitLocation',
@@ -23,11 +24,17 @@ export class SubmitLocationComponent implements OnInit {
   locationForCreation: LocationForCreation;
   subcategoryId: number;
 
+  addressResult: string;
+  latitudeResult: number;
+  longitudeResult: number;
+
+
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
     private subCategoryService: SubCategoryService,
     private locationService: LocationService,
+    private searchGeoJsonService: GeoSearchService,
     private alertify: AlertifyService,
     private router: Router
     ) {
@@ -50,6 +57,23 @@ export class SubmitLocationComponent implements OnInit {
       longitude: ['']
     })
     this.getCategories();
+  }
+
+  searchParam: string;
+
+  async searchData(){
+    const model = await this.searchGeoJsonService.geoSearch(this.searchParam);
+      {
+        model.x = model.x.substring(0, 10);
+        model.y = model.y.substring(0, 10);
+        this.addressResult = model.label;
+        this.basicdata.patchValue({adress: model.label});
+        this.latitudeResult = model.y;
+        this.coordinates.patchValue({latitude: model.y});
+        this.longitudeResult = model.x;
+        this.coordinates.patchValue({longitude: model.x});
+      }
+      console.log(model);
   }
 
 

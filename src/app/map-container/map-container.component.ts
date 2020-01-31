@@ -13,7 +13,7 @@ import {GeoSearchService} from '../_services/geo-search.service';
 export class MapContainerComponent implements OnInit {
   @ViewChild(SubcategoryContainerComponent, {static: false}) subcategoryContainer: SubcategoryContainerComponent;
   @ViewChild(MapComponent, {static: false}) mapComponent: MapComponent;
-  @Output() curentlySelectedCategories: EventEmitter<number[]> = new EventEmitter<number[]>();
+  //@Output() curentlySelectedCategories: EventEmitter<number[]> = new EventEmitter<number[]>();
 
 
   breakpoint: number;
@@ -48,7 +48,7 @@ export class MapContainerComponent implements OnInit {
   selectCategory($event: number) {
     this.changeCategoryList($event);
     this.categoryService.curentlySelectedCategories = this.selectedCategories;
-    this.curentlySelectedCategories.emit(this.selectedCategories);
+    //this.curentlySelectedCategories.emit(this.selectedCategories);
   }
 
   changeCategoryList(changedCategory: number){
